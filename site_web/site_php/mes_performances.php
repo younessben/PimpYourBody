@@ -10,7 +10,6 @@
     
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/bootstrap-table-editable.js"></script>
     
     
     

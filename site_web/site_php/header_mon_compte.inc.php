@@ -24,8 +24,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boutique <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="machines.php">Machines</a></li>
-                    <li><a href="mes_performances.php">Poids libres</a></li>
-                    <li><a href="mes_progres.php">Compléments alimentaires</a></li>
+                    <li><a href="poids_libres.php">Poids libres</a></li>
+                    <li><a href="complements_alimentaires.php">Compléments alimentaires</a></li>
                   </ul>
                 </li>
                 <li id="liEntrainement"><a href="entrainement.php">Entrainement</a></li>
