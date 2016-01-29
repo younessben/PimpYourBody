@@ -4,7 +4,7 @@
         	<div class="social-icons">
             	<a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"></span> 0</a>
                 
-                <a href="monCompte.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
+                <a href="mon_compte.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
                 
                 
                 
