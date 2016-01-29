@@ -1,6 +1,6 @@
 function init(id)
 {
-	document.getElementById(id).className="current"
+	document.getElementById(id).className="current";
 
 }
 function clearMenuBoutique()
@@ -46,6 +46,24 @@ function menuMonCompte(id,title)
 	var query = document.querySelector('#divTitle h2');
 	
 	query.innerHTML='<span class="color-1">Mes</span> '+ title;
+    /*if(id=="liProgres")
+    {
+        $(document).ready(function() {
+        $("#divContent").load("progres.inc.php");
+        });
+
+    }
+    else if(id=="liPerformances")
+    {
+        $(document).ready(function() {
+        $("#divContent").load("performances.inc.php");
+        });
+
+    }*/
+            
+    
+    
+    
 
 
 }
