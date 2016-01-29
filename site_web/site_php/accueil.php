@@ -8,7 +8,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
-    <script src="js/jquery-1.7.min.js"></script>
+    
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/tms-0.3.js"></script>
 	<script src="js/tms_presets.js"></script>

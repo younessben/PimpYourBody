@@ -3523,8 +3523,8 @@ tbody.collapse.in {
 }
 .dropup,
 .dropdown {
-  position: relative;
-}
+    position: relative;
+  }
 .dropdown-toggle:focus {
   outline: 0;
 }
@@ -4064,7 +4064,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs.nav-justified > .dropdown .dropdown-menu {
   top: auto;
-  left: 0;
+  left: auto;
 }
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li {

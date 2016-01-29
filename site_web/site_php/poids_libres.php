@@ -44,14 +44,9 @@
           <div class="grid_12">
             <div class="box-shadow">
               <div class="wrap block-2">
-                    <ul class="nav nav-pills nav-stacked col-3">
-                      <li><br/></li> <!-- On met un espace afin de décaler le menu vers le bas  -->
-                      <li id="liMachines" role="presentation" class="active" onclick="menuBoutique('liMachines','machines')"><a href="#">Machines</a></li>
-                      <li id="liPL" role="presentation" onclick="menuBoutique('liPL','poids libres')"><a href="#">Poids libres</a></li>
-                      <li id="liCA" role="presentation" onclick="menuBoutique('liCA','compléments alimentaires')"><a href="#">Compléments alimentaires</a></li>
-                    </ul>
+                    
                     <div class="col-4" id="divTitle">
-                      <h2 class="p3"><span class="color-1">Nos</span> machines</h2>
+                      <h2 class="p3"><span class="color-1">Nos</span> poids libres</h2>
                         
                         <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
                             <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
