@@ -124,3 +124,11 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 #divContent {
     width: 100%;
 }
+
+.col-4inscr {
+    margin-left: 480px;
+}
+
+.col-4cnnx {
+    float:left; width:400px
+}

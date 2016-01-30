@@ -3,7 +3,7 @@
         <nav >
         	<div class="social-icons">
             	<a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">3</span></a>
-                <a href="mon_objectif.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
+                <a href="connexion.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
                 
             </div>
            
