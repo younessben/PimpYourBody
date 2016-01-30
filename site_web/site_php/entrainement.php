@@ -40,27 +40,37 @@
           <div class="grid_12">
           	<div class="box-shadow">
             	<div class="wrap block-2">
-                    <ul class="nav nav-pills nav-stacked col-3">
-                      <li role="presentation" class="active"><a href="#">Home</a></li>
-                      <li role="presentation"><a href="#">Profile</a></li>
-                      <li role="presentation"><a href="#">Messages</a></li>
-                    </ul>
+                   
                     <div class="col-4">
-                    	<h2 class="p3"><span class="color-1">Our</span> training</h2>
-                        <p class="p2"><strong>Nam liber tempor cum soluta nobis eleifend option congue nihil</strong></p>
-                        <p>Imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</p>
-                        <div class="wrap box-1 top-4">
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
+                    	<h2 class="p3"><span class="color-1">Programmes de musculation</span> tous niveaux</h2>
+                        <p class="p2"><strong>Quand on fait de la musculation, il est important de mettre en place un programme correspondant à votre objectif. Celui-ci peut être de gagner du muscle ou du poids, vous débarrasser de kilos en trop, préparer une saison sportive ou simplement retrouver et maintenir sa forme. </strong></p>
+                        <p class="p5">Vous trouverez ici différents programmes de musculation, pour la prise de masse, de force ou la perte de poids. Que vous soyez débutants ou expérimenté, nos programmes et conseils vous aideront à progresser au mieux. Il n'y a plus qu'à vous laisser guider.
+                        <a href="inscription.php" style="">CLIQUEZ ICI POUR VOUS INSCRIRE</a>
+                         </p>
+                        <div class="wrap box-1">
+                            <img src="images/abdos2.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilis lorem ipsum dolor.</p>
+                                <p class="p2"><strong>Abdominaux : 8 minutes en enfer !</strong></p>
+                                <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
+                                <a href="detail_exercice.php" class="button top-6">Faire exercice</a>
                             </div>
                         </div>
-                        <div class="wrap box-1 top-2">
-                            <img src="images/page2-img2.jpg" alt="" class="img-border img-indent">
+                        <br/>
+                        <div class="wrap box-1">
+                            <img src="images/page3-img1.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                <p class="p2"><strong>Ut wisi enim ad minim veniamis nostrud</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim.</p>
+                                <p class="p2"><strong>Un dos puissant en "V"</strong></p>
+                                <p>Le dos est le groupe musculaire le plus vaste du corps. Il faudra varier les mouvements pour solliciter tous les nombreux muscles qui le composent.</p>
+                                <a href="inscription.php" class="button top-6">Faire exercice</a>
+                            </div>
+                             <br/>
+                            <br/>
+                             <div class="wrap box-1">
+                            <img src="images/bras.jpg" alt="" class="img-border img-indent">
+                            <div class="extra-wrap">
+                                <p class="p2"><strong>Faites exploser vos bras !</strong></p>
+                                <p>Obtenir des gros bras est le souhait de bon nombre de pratiquants de musculation qui squattent les barres et machines à biceps et triceps.</p>
+                                <a href="inscription.php" class="button top-6">Faire exercice</a>
                             </div>
                         </div>
                     </div>
@@ -72,8 +82,8 @@
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
+        <p>© 2016 PimpYourBody Club</p>
+        <p>COPYRIGHT FRANCE ® <a class="link" href="" target="_blank" rel="nofollow">www.pimpyourbody.org</a></p>
     </footer>	
 </div>    
 <script>
