@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require('authentification.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +52,7 @@
   <div class="bg-img"></div>
 <!--==============================header=================================-->
     <header id="header">
-        <?php include('header_mon_compte.inc.php'); ?>
+        <?php include('header.inc.php'); ?>
     </header> 
 <!--==============================content================================-->
     <section id="content">

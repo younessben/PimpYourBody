@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once 'connexion_bdd.php';
+require('authentification.php');
+if (Auth::islog()){
+	header('Location:mes_informations.php');
+}
 ?>
 
 <?php
@@ -49,6 +53,10 @@ require_once 'connexion_bdd.php';
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/cufon-yui.js"></script>

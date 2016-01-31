@@ -1,3 +1,8 @@
+
+<?php
+    session_start();
+    require('authentification.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +52,7 @@
   <div class="bg-img"></div>
 <!--==============================header=================================-->
     <header id="header">
-        <?php include('header_mon_compte.inc.php'); ?>
+        <?php include('header.inc.php'); ?>
     </header> 
 <!--==============================content================================-->
     <section id="content">
@@ -117,6 +122,29 @@
                             
                         </div>
                         
+                        <nav>
+                          <ul class="pagination">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        
+                        
+                        
+                        <h2 class="p3"><span class="color-1">Ajouter</span> une nouvelle performance</h2>
                         <form>
                                 <fieldset>
                                     <div class="row">
@@ -225,4 +253,7 @@
 </script>
 </body>
 </html>
+
+
+
 

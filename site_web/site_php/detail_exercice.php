@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 require_once 'connexion_bdd.php';
+
+    session_start();
+    require('authentification.php');
+
 ?>
 <html lang="en">
 <head>
