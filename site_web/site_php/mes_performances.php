@@ -1,3 +1,77 @@
+
+<?php
+    session_start();
+    require('authentification.php');
+    include('bibliotheque_fonctions.php');
+?>
+
+
+
+
+
+<?php
+   
+
+    if(!empty($_POST) && strlen($_POST['poids'])>1 && strlen($_POST['taille'])>2 && floatval($_POST['masseGraisse'])<100)
+		{
+            $date = date('Y-m-d H:i:s');
+            //$date = implode('-', array_reverse(explode('/', addslashes($_POST['date']))));
+            
+            $poids = floatval($_POST['poids']);
+            $taille= floatval($_POST['taille']);
+              
+            $bras= floatval($_POST['bras']);
+            $epaules= floatval($_POST['epaules']);
+            $poitrine= floatval($_POST['poitrine']);
+              
+            $cuisse= floatval($_POST['cuisse']);
+            $trtaille= floatval($_POST['trtaille']);
+            $idUtil=3;
+              
+            $masseGraissse= floatval($_POST['masseGraisse']);
+        
+            $req="INSERT INTO `performances`
+                                    (`ID_UTILISATEUR`, `POIDS`, `TAILLE`, `BRAS`, `EPAULES`, `POITRINES`, `CUISSES`, `TOUR_TAILLE`, `DATE_SAISIE`, `MASSE_GRAISSEUSE`) 
+                                    VALUES (:idUtil,:poids,:taille,:bras,:epaules,:poitrine,:cuisse,:trtaille,:date,:masseGraisse)";
+            $stmt = $connexion->prepare($req);
+            $stmt->bindParam(':idUtil', $idUtil);
+            $stmt->bindParam(':poids', $poids);
+            $stmt->bindParam(':taille', $taille);
+            $stmt->bindParam(':bras', $bras);
+            $stmt->bindParam(':epaules', $epaules);
+            $stmt->bindParam(':poitrine', $poitrine);
+            $stmt->bindParam(':cuisse', $cuisse);
+            $stmt->bindParam(':trtaille', $trtaille);
+            $stmt->bindParam(':date', $date);
+            $stmt->bindParam(':masseGraisse', $masseGraissse);
+        
+            
+            $stmt->execute();
+        
+        
+			
+		}
+        	
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +121,7 @@
   <div class="bg-img"></div>
 <!--==============================header=================================-->
     <header id="header">
-        <?php include('header_mon_compte.inc.php'); ?>
+        <?php include('header.inc.php'); ?>
     </header> 
 <!--==============================content================================-->
     <section id="content">
@@ -76,48 +150,56 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row"><a href="#">Modifier</a></th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row"><a href="#">Modifier</a></th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row"><a href="#">Modifier</a></th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                </tr>
+                                <!----------------------------- Affichage des produits ------------------------------------>
+                        <?php
+                            $liste=listerPerformances($connexion,3);
+                            if(empty($liste)==true)
+                            {
+                                echo '<p>Il n\'y a aucune performance pour le moment</p>';
+                            }
+                            else
+                            {
+                                foreach ($liste as $performance) 
+                                {
+                                    
+                                    affichagePerformance($connexion,$performance);
+                                }
+                            }
+
+
+                        ?>
+                         <!---------------------------------------------------------------------------------------->
+                        
+                       
                               </tbody>
                             </table>
                             
                         </div>
                         
-                        <form>
+                        <nav>
+                          <ul class="pagination">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        
+                        
+                        
+                        <h2 class="p3"><span class="color-1">Ajouter</span> une nouvelle performance</h2>
+                        <form id="monFormulaire" action="mes_performances.php" method="post">
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-sm-3">
@@ -202,7 +284,7 @@
 								<br>
                                     
                                     <br>
-						        <a href="#" class="button top-6">Ajouter une performance</a>
+						        <a href="#" class="button top-6"  onclick='document.getElementById("monFormulaire").submit()'>Ajouter une performance</a>
                                     
                             </fieldset>
                         </form>
@@ -225,4 +307,7 @@
 </script>
 </body>
 </html>
+
+
+
 

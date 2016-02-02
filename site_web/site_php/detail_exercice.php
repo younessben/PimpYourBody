@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 require_once 'connexion_bdd.php';
+
+    session_start();
+    require('authentification.php');
+
 ?>
 <html lang="en">
 <head>
@@ -10,6 +14,11 @@ require_once 'connexion_bdd.php';
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/cufon-yui.js"></script>
@@ -20,8 +29,6 @@ require_once 'connexion_bdd.php';
     <script src="js/FF-cash.js"></script>
     <script src="js/myscript.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">

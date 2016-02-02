@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require('authentification.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/cufon-yui.js"></script>
@@ -57,7 +66,7 @@
                             <div class="extra-wrap">
                                 <p class="p2"><strong>PRISE DE MASSE MAXIMUM</strong></p>
                                 <p>OBJECTIF : Consommer fréquemment un maximum de calories de qualité pour favoriser l’anabolisme, gagner en poids de corps et en masse musculaire.</p>
-                                <a href="detailNutrition.php" class="button top-6">Acceder au programme</a>
+                                <a href="detail_nutrition.php" class="button top-6">Acceder au programme</a>
                             </div>
                              <br/>
                             <br/>
