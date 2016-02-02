@@ -1,5 +1,7 @@
 <?php
 require_once 'connexion_bdd.php';
+require('authentification.php');
+
 ?>
 <?php
     if(!empty($_POST) && strlen($_POST['prenom'])>2 && strlen($_POST['nom'])>2 && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
@@ -15,7 +17,7 @@ require_once 'connexion_bdd.php';
             $codePostal = addslashes($_POST['codePostal']);
             $telephone = addslashes($_POST['telephone']);
 			$password = sha1($_POST['password']);
-			$token = sha1(uniqid(rand()));
+			//$token = sha1(uniqid(rand()));
 			//test de l'email pour savoir si il y a déjà un utilisateur avec cet email dans la BDD (eviter les doublons)
 			$r=array('email'=>$email);
 			$sql2 = 'SELECT * FROM utilisateur WHERE email=:email';
@@ -33,16 +35,16 @@ require_once 'connexion_bdd.php';
 				$req->execute($q);
 
 				//Envoi d'un email
-				/*$to = $email;
+				$to = $email;
 				$sujet = 'Activation de votre compte';
 				$body = 'Merci de cliquer ici pour l activation -> 
-						<a href="http://localhost/alpha_New_theme/activation.php?token='.$token.'&email='.$to.'">Activation du compte</a>';
+						<a href="http://localhost/Pimpyourbody/site_web/site_php/activation_inscription.php?email='.$to.'">Activation du compte</a>';
 				$entete = "MIME-Version: 1.0\r\n";
 				$entete.="Content-type: text/html; charset=UTF-8\r\n";
-				$entete.='From: PANDAX ::' . "\r\n";
-				'Reply-To: Pandax_webmaster@localhost.com' . "\r\n";
+				$entete.='From: PIMPYOURBODY ::' . "\r\n";
+				'Reply-To: Pimpyourbody@localhost.com' . "\r\n";
 				'X-Mailer: PHP/' . phpversion();
-				mail($to,$sujet,$body,$entete);*/
+				mail($to,$sujet,$body,$entete);
                 
 				header('location:connexion.php');
 				}

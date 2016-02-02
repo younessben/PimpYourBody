@@ -1,12 +1,12 @@
 <?php
 session_start();
+//require('authentification.php');
 require('authentification.php');
-/*require('authentification.php');
 if (Auth::islog()){
 	
 }else{
 	header('Location:connexion.php');
-}*/
+}
 ?>
         
 <!DOCTYPE html>
@@ -56,38 +56,68 @@ if (Auth::islog()){
           	<div class="box-shadow">
             	<div class="wrap block-2">
                     <div class="col-1">
-                    	<h2 class="p3"><span class="color-1">We do care</span> about your health</h2>
-                        <p class="p2"><strong>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </strong></p>
+                    	<h2 class="p3"><span class="color-1">Bienvenue</span> sur votre espace personnel</h2>
+                        <p class="p2"><strong>Voici le résumé de vos informations</strong></p>
                         <?php
-        //var_dump($_SESSION['Auth']['email']); Utilisé pour tester le contenu de la variable
-       $req=$connexion->prepare("SELECT prenom FROM utilisateur WHERE email = :email");
-       $req->execute(array('email' => $_SESSION['Auth']['email']));
+                        //var_dump($_SESSION['Auth']['email']); Utilisé pour tester le contenu de la variable
+                        $req=$connexion->prepare("SELECT prenom FROM utilisateur WHERE email = :email");
+                        $req->execute(array('email' => $_SESSION['Auth']['email']));
 
-        echo '<h1>'.'Bonjour ';
-           echo '<b>';
-             while ($donnees = $req->fetch())
+                        echo '<h1>'.'Bonjour ';
+                        echo '<b>';
+                        while ($donnees = $req->fetch())
                             {
                                 echo $donnees['prenom'] .'  <br />';
                             }
-            echo '</h1>'.'</b>'.'<br>';
-			if(isset($_SESSION['Auth']['email']) && isset($_SESSION['Auth']['password']))
+                        echo '</h1>'.'</b>'.'<br>';
+			         if(isset($_SESSION['Auth']['email']) && isset($_SESSION['Auth']['password']))
 				{
+                    echo '<br>'.'<br>';
+                    echo '<br>'.'<br>';
 					echo '<b>'.'Votre email :'.'</b>'.'<br>'.$_SESSION['Auth']['email'];
 					echo '<br>'.'<br>';
-					echo '<b>'.'Votre password :'.'</b>'.'<br>'.$_SESSION['Auth']['password'];
+					
 					echo '<br>'.'<br>';
-				}
-	?>
+                         
+                          $q5=array('email'=>$_SESSION['Auth']['email']);
+                          $req3='SELECT * FROM utilisateur WHERE email=:email';
+                          $reponse= $connexion->prepare($req3);
+                          $reponse->execute($q5);
+   
+    
+                            $liste =array();
+                                if($reponse->execute())
+                            {
+                            while ($donnees = $reponse->fetch())
+                            {
+                                array_push($liste, $tab=array($donnees['NOM'],$donnees['PRENOM'],$donnees['AGE'],$donnees['SEXE'],$donnees['TELEPHONE']));
+                                
+                                foreach  ($tab as $value ){
+                                    echo '<b>'. $value;
+                                    echo '<br />';
+                                }
+                                
+                            }
+                                
+                            
+        
+                         }
+                
+                        $req2=$connexion->prepare("SELECT nom FROM utilisateur WHERE email = :email");
+                        $req2->execute(array('email' => $_SESSION['Auth']['email']));
+                        echo '<b>';
+                        while ($donnees = $req2->fetch())
+                            {
+                                echo $donnees['nom'] .'  <br />';
+                            }
+				}?>
+                        
                         <div class="wrap box-1">
                             <img src="images/page4-img1.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
                                 <a href="modification_membre.php">Modification de vos informations</a>
 		<br><br>
 	
-        <form action="deconnexion.php" method="post">
-            <input type="submit" class="btn btn-default" name="logout" value="Deconnexion"/>
-        </form>
-    
                                 <a href="#" class="button top-6">Search</a>
                             </div>
                         </div>
@@ -100,8 +130,8 @@ if (Auth::islog()){
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
+        <p>© 2016 PIMPYOURBODY</p>
+        <p>Site réalisé par Yoann WOLF, Ahmet IMRE, Youness BEN</p>
     </footer>	
 </div>    
 <script>
