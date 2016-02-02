@@ -6,66 +6,78 @@
 ?>
 
 
-
-
-
 <?php
    
 
     if(!empty($_POST) && strlen($_POST['poids'])>1 && strlen($_POST['taille'])>2 && floatval($_POST['masseGraisse'])<100)
-		{
-            $date = date('Y-m-d H:i:s');
-            //$date = implode('-', array_reverse(explode('/', addslashes($_POST['date']))));
-            
-            $poids = floatval($_POST['poids']);
-            $taille= floatval($_POST['taille']);
-              
-            $bras= floatval($_POST['bras']);
-            $epaules= floatval($_POST['epaules']);
-            $poitrine= floatval($_POST['poitrine']);
-              
-            $cuisse= floatval($_POST['cuisse']);
-            $trtaille= floatval($_POST['trtaille']);
-            $idUtil=3;
-              
-            $masseGraissse= floatval($_POST['masseGraisse']);
+    {
+        $date = date('Y-m-d H:i:s');
+        //$date = implode('-', array_reverse(explode('/', addslashes($_POST['date']))));
+
+        $poids = floatval($_POST['poids']);
+        $taille= floatval($_POST['taille']);
+
+        $bras= floatval($_POST['bras']);
+        $epaules= floatval($_POST['epaules']);
+        $poitrine= floatval($_POST['poitrine']);
+
+        $cuisse= floatval($_POST['cuisse']);
+        $trtaille= floatval($_POST['trtaille']);
+        $idUtil=3;
+
+        $masseGraissse= floatval($_POST['masseGraisse']);
         
+        
+        
+        if($_POST['typePost']=="Ajout")
+        {
             $req="INSERT INTO `performances`
-                                    (`ID_UTILISATEUR`, `POIDS`, `TAILLE`, `BRAS`, `EPAULES`, `POITRINES`, `CUISSES`, `TOUR_TAILLE`, `DATE_SAISIE`, `MASSE_GRAISSEUSE`) 
-                                    VALUES (:idUtil,:poids,:taille,:bras,:epaules,:poitrine,:cuisse,:trtaille,:date,:masseGraisse)";
-            $stmt = $connexion->prepare($req);
-            $stmt->bindParam(':idUtil', $idUtil);
-            $stmt->bindParam(':poids', $poids);
-            $stmt->bindParam(':taille', $taille);
-            $stmt->bindParam(':bras', $bras);
-            $stmt->bindParam(':epaules', $epaules);
-            $stmt->bindParam(':poitrine', $poitrine);
-            $stmt->bindParam(':cuisse', $cuisse);
-            $stmt->bindParam(':trtaille', $trtaille);
-            $stmt->bindParam(':date', $date);
-            $stmt->bindParam(':masseGraisse', $masseGraissse);
-        
+                                (`ID_UTILISATEUR`, `POIDS`, `TAILLE`, `BRAS`, `EPAULES`, `POITRINES`, `CUISSES`, `TOUR_TAILLE`, `DATE_SAISIE`, `MASSE_GRAISSEUSE`) 
+                                VALUES (:idUtil,:poids,:taille,:bras,:epaules,:poitrine,:cuisse,:trtaille,:date,:masseGraisse)";
             
-            $stmt->execute();
+            $stmt = $connexion->prepare($req);
+        }
+        else
+        {
+            $idPerf=$_POST['typePost'];
+            $req="UPDATE `performances`
+                    SET
+                         `POIDS`=:poids
+                        , `TAILLE`=:taille
+                        , `BRAS`=:bras
+                        , `EPAULES`=:epaules
+                        , `POITRINES`=:poitrine
+                        , `CUISSES`=:cuisse
+                        , `TOUR_TAILLE`=:trtaille
+                        , `MASSE_GRAISSEUSE`=:masseGraisse
+                         
+                     WHERE ID_UTILISATEUR = :idUtil AND  ID_PERFORMANCE= :idPerf;
+                     ";
+            
+            $stmt = $connexion->prepare($req);
+            $stmt->bindParam(':idPerf', $idPerf);
+            
+        }
         
         
-			
-		}
+        $stmt->bindParam(':idUtil', $idUtil);
+        $stmt->bindParam(':poids', $poids);
+        $stmt->bindParam(':taille', $taille);
+        $stmt->bindParam(':bras', $bras);
+        $stmt->bindParam(':epaules', $epaules);
+        $stmt->bindParam(':poitrine', $poitrine);
+        $stmt->bindParam(':cuisse', $cuisse);
+        $stmt->bindParam(':trtaille', $trtaille);
+        $stmt->bindParam(':masseGraisse', $masseGraissse);
+
+
+        $stmt->execute();
+
+
+
+    }
         	
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -196,98 +208,16 @@
                           </ul>
                         </nav>
                         
+                        <?php
+                            if(isset($_GET['idPerf']))
+                                afficheFormulairePerf($connexion,$_GET['idPerf']);
+                            else
+                                afficheFormulairePerf($connexion,null);
+                        
+                        ?>
                         
                         
-                        <h2 class="p3"><span class="color-1">Ajouter</span> une nouvelle performance</h2>
-                        <form id="monFormulaire" action="mes_performances.php" method="post">
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="date">Date:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                            <input type="text" class="form-control" label="date" id="date" name="date" placeholder="JJ/MM/AAAA" />
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="poids" >Poids:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                            <input type="text" class="form-control" id="poids" name="poids" placeholder="75 kg" />
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="taille">Taille:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                            <input type="text" class="form-control" id="taille" name="taille" placeholder="180 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="bras">Bras:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                            <input type="text" class="form-control" id="bras" name="bras" placeholder="40 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="epaules">Epaules:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-				                            <input type="email"  class="form-control" id="epaules" name="epaules" placeholder="100 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                        <label for="poitrine" >Poitrine:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                        <input type="text" class="form-control" id="poitrine" name="poitrine" placeholder="80 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                        <label for="cuisse" >Cuisse:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                        <input type="text" class="form-control" id="cuisse" name="cuisse" placeholder="50 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="trtaille" >Tour de taille:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                        <input type="text" class="form-control" id="trtaille" name="trtaille" placeholder="70 cm">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="masseGraisse" >Masse graisseuse:</label>
-                                        </div>
-                                        <div class="col-ld-3">
-                                            <input type="text" class="form-control" id="masseGraisse" name="masseGraisse" placeholder="17.5 %">
-                                        </div>
-                                    </div>
-								<br>
-                                    
-                                    <br>
-						        <a href="#" class="button top-6"  onclick='document.getElementById("monFormulaire").submit()'>Ajouter une performance</a>
-                                    
-                            </fieldset>
-                        </form>
+                        
                         
                     </div>
                 </div>
