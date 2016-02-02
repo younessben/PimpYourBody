@@ -1,6 +1,7 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions.php');
 ?>
 
 
@@ -54,50 +55,28 @@
                     <div class="col-4" id="divTitle">
                       <h2 class="p3"><span class="color-1">Nos</span> complements alimentaires</h2>
                         
-                        <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex sgzgz zet </p>
-                                
-                                <p style="color:red; font-weight:bold;">Prix: 150€ <button type="button" class="btn btn-primary" style="margin-left:42%" >Ajouter au panier</button></p>
-                                <a href="produit.php" style="margin-left:67%">Plus de détails >></a>
-                               
-                            </div>
-                        </div>
-                        <div class="wrap box-1 top-2"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <img src="images/page2-img2.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex sgzgz zet </p>
-                                
-                                <p style="color:red; font-weight:bold;">Prix: 150€ <button type="button" class="btn btn-primary" style="margin-left:42%" >Ajouter au panier</button></p>
-                                <a href="produit.php" style="margin-left:67%">Plus de détails >></a>
-                               
-                            </div>
-                        </div>
-                        <div class="wrap box-1 top-2"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <img src="images/page2-img2.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex sgzgz zet </p>
-                                
-                                <p style="color:red; font-weight:bold;">Prix: 150€ <button type="button" class="btn btn-primary" style="margin-left:42%" >Ajouter au panier</button></p>
-                                <a href="produit.php" style="margin-left:67%">Plus de détails >></a>
-                               
-                            </div>
-                        </div>
-                        <div class="wrap box-1 top-2"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <img src="images/page2-img2.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex sgzgz zet </p>
-                                
-                                <p style="color:red; font-weight:bold;">Prix: 150€ <button type="button" class="btn btn-primary" style="margin-left:42%" >Ajouter au panier</button></p>
-                                <a href="produit.php" style="margin-left:67%">Plus de détails >></a>
-                               
-                            </div>
-                        </div>
+                        
+                    <!----------------------------- Affichage des produits ------------------------------------>
+                        
+                        <?php
+                            $liste=listerProduits($connexion,3);
+                            if(empty($liste)==true)
+                            {
+                                echo '<p>Il n\'y a aucun produit pour le moment</p>';
+                            }
+                            else
+                            {
+                                foreach ($liste as $produit) 
+                                {
+                                    
+                                    affichageProduit($connexion,$produit);
+                                }
+                            }
+
+
+                        ?>
+                        
+                    <!---------------------------------------------------------------------------------------->
 
                         
                         
