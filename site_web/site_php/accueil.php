@@ -65,7 +65,7 @@
               <ul class="items">
                  <li><img src="images/slider-1.jpg" alt="">
                     <div class="banner">
-                        <p class="font-1">Speeeecial<span>Program</span></p>
+                        <p class="font-1">Gagner<span>du muscle</span></p>
                         <p class="font-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</p>
                         <a href="#">Read More</a>
                     </div>

@@ -53,7 +53,22 @@ require_once 'connexion_bdd.php';
                             <div class="extra-wrap">
                                 
                                   <div class="form-group">
-                                    <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;5 </span> </p>
+                                    <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;
+                                        <?php
+                                                                            
+                                        $result = mysql_query('SELECT NOM where PRENOM like \'Youness\';') or die(mysql_error());
+		                                  //echo 'SELECT NOM where PRENOM like \'Youness\';';
+                                          /*  if(mysql_num_rows($result) > 0) {
+                                                while( $row = mysql_fetch_array($result)) {
+                                                    $cli= $row['NOM'];
+                                                   
+                                                }
+                                            }else {
+                                                $cli = null ;
+                                            }
+                                            echo $cli;*/
+                                        ?>
+                                        </span> </p>
                                      <p><strong>Nombre de repetion</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;10 </span> </p>
                                      <p><strong>duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;30 secondes </span> </p> 
                                   </div>
