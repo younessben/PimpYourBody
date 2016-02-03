@@ -68,6 +68,10 @@
                                     affichageProduit($connexion,$produit);
                                 }
                             }
+                        
+                            
+                        
+                            
 
 
                         ?>

@@ -1,48 +1,44 @@
 <?php
-session_start();
-require_once 'connexion_bdd.php';
-require('authentification.php');
-if (Auth::islog()){
-	header('Location:mes_informations.php');
-}
+    require_once 'connexion_bdd.php';
+    require('authentification.php');
 ?>
 
 <?php
-    if(!empty($_POST))
-		{
-			$email=$_POST['email'];
-			$password=sha1($_POST['password']);
-			$q = array('email'=>$email,'password'=>$password);
-			$sql = 'SELECT email,mot_de_passe FROM utilisateur WHERE email = :email AND mot_de_passe = :password';
-			$req = $connexion->prepare($sql);
-			$req->execute($q);
-			$count = $req -> rowCount($sql);
-				if ($count == 1)
-					{
-					$sql = 'SELECT email,actif FROM utilisateur WHERE email = :email AND mot_de_passe = :password AND actif = 1';
-					$req = $connexion->prepare($sql);
-					$req->execute($q);
-					$dejaactif = $req->rowCount($sql);
-						if($dejaactif==1)
-						{
-							$_SESSION['Auth'] = array(
-								'email'=> $email,
-								'password'=>$password);
-							header('Location:mes_informations.php');
-						}else
-							{
-								$actif ='Votre compte n\'a pas encore ete active';
-							}
-					}else
-						{
-							$error_utilisateur='Utilisateur inconnu';
-						}
-		}
-		if(isset($actif))
-			{
-				echo $actif;
-			}
+    //$token = $_GET['token']; //On récupère le token passé dans le lien avec GET
+    $email = $_GET['email']; //On récupère l'email passé dans le lien avec GET
+
+    if (!empty ($_GET)){
+        $q = array ('email'=>$email);
+        $sql='SELECT email FROM utilisateur WHERE email = :email';
+        $req = $connexion->prepare($sql);
+        $req->execute($q);
+        $count = $req -> rowCount($sql);
+        if ($count == 1){
+            $verif = array('email'=>$email,'actif'=>'1');
+            //Verification si le compte est activé
+            $sql = 'SELECT email,actif FROM utilisateur WHERE email = :email AND actif = :actif';
+            $req = $connexion->prepare($sql);
+            $req->execute($verif);
+            $dejaactif = $req->rowCount($sql);
+            if($dejaactif == 1){
+                $error_actif='Compte deja actif';
+            }else{
+                $u = array('email'=>$email,'actif'=>'1');
+                $sql = 'UPDATE utilisateur SET actif = :actif WHERE email = :email';
+                $req = $connexion->prepare($sql);
+                $req->execute($u);
+                $activated='Votre compte vient d\'etre active';
+
+            }
+        }else{
+            $prob_token = 'Erreur de paramètre dans l\'activation du compte';
+
+        }
+    }else{
+        header('Location:mes_informations.php');
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,32 +86,11 @@ if (Auth::islog()){
           	<div class="box-shadow">
             	<div class="wrap block-2">
                     <div class="col-4cnnx">
-                    	<h2><span class="color-1">Connexion</span> client</h2>
-                        <form id="form" method="post" >
-                            <fieldset>
-                              <label><input type="text" name="email" id="email" placeholder="Email"></label>
-                                <div class="error">
-								    <?php if (isset($error_utilisateur))
-								        {
-								            echo $error_utilisateur;
-								        }?>
-				                </div>
-                              <label><input type="password" id="password" name="password" placeholder="Password"></label>
-                              
-                              <div class="passwordmissing"><a href="reinit_password.php">Mot de passe oublié ?</a></div>
-                                <a class="button" href="#" onClick="document.getElementById('form').submit()"> Se connecter</a>
-                            <?php if(isset($actif)){echo $actif;} ?>
-                                
-                            </fieldset>  
-                          </form> 
-                    </div>
-                    <div class="col-4inscr">
-                    	<h2><span class="color-1">Nouveau </span> client?</h2>
+                    	<h2><span class="color-1">Activation</span> compte client</h2>
+                        <div class="error"><?php if (isset($error_actif)){echo $error_actif;} ?></div> <!-- Affiche compte déjà actif si le compte est a déjà été activé-->
+                        <div class="error"><?php if (isset($activated)){echo $activated;} ?></div><!-- Votre compte a bien été activé       (colonne actif à OUI dans la BDD)-->   
                         
-                              <div class="inscript"><a href="inscription.php" class="button" onClick="document.getElementById('form').submit()">S'inscrire</a></div>
-                    </div>
-                    
-                    
+                    </div> 
                 </div>
             </div>
           </div>

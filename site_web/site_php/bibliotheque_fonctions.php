@@ -231,7 +231,7 @@ function affichagePerformance($cnn,$perf) // affiche le titre
     
     echo'
             <tr>
-              <th scope="row"><a href="#">Modifier</a></th>
+              <th scope="row"><a href="mes_performances.php?idPerf='.$perf[0].'">Modifier</a></th>
               <td>'.$perf[9].'</td>
               <td>'.$perf[2].'</td>
               <td>'.$perf[3].'</td>
@@ -247,6 +247,200 @@ function affichagePerformance($cnn,$perf) // affiche le titre
 
 
 }
+
+function listeDetailsPerformance($cnn,$idPerf)
+{
+    
+    
+    $req="  SELECT *
+            FROM `performances`
+            WHERE `ID_PERFORMANCE` = ".$idPerf.";";
+
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste,array($donnees['ID_PERFORMANCE'],$donnees['ID_UTILISATEUR'],$donnees['POIDS'],$donnees['TAILLE'],$donnees['BRAS']
+                                    ,$donnees['EPAULES'],$donnees['POITRINES'],$donnees['CUISSES'],$donnees['TOUR_TAILLE'],$donnees['DATE_SAISIE'],$donnees['MASSE_GRAISSEUSE']));
+        }
+       
+        
+    }
+   
+    return $liste;
+}
+
+
+function afficheFormulairePerf($cnn, $idPerf)
+{
+    
+    $poids = "";
+    $taille= "";
+
+    $bras= "";
+    $epaules= "";
+    $poitrine= "";
+
+    $cuisse= "";
+    $trtaille= "";
+
+    $masseGraisse= "";
+    
+    if($idPerf != null)
+    {
+        $liste=listeDetailsPerformance($cnn,$idPerf);
+        
+        
+        
+        foreach ($liste as $maPerformance) 
+        {
+
+            $poids = $maPerformance[2];
+            $taille= $maPerformance[3];
+
+            $bras= $maPerformance[4];
+            $epaules= $maPerformance[5];
+            $poitrine= $maPerformance[6];
+
+            $cuisse= $maPerformance[7];
+            $trtaille= $maPerformance[8];
+
+            $masseGraisse= $maPerformance[10];
+        }
+        
+        echo
+            '<h2 class="p3"><span class="color-1">Modifier</span> ma performance</h2>';
+        
+    }
+    else
+       echo '<h2 class="p3"><span class="color-1">Ajouter</span> une nouvelle performance</h2>';
+        
+    
+                
+                
+        
+        
+        
+        echo'
+                        <form id="monFormulaire" action="mes_performances.php" method="post">
+                                <fieldset>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="poids" >Poids:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="text" class="form-control" id="poids" name="poids" placeholder="75 kg" value="'.$poids.'" />
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="taille">Taille:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="text" class="form-control" id="taille" name="taille" placeholder="180 cm" value="'.$taille.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="bras">Bras:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="text" class="form-control" id="bras" name="bras" placeholder="40 cm" value="'.$bras.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="epaules">Epaules:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+				                            <input type="email"  class="form-control" id="epaules" name="epaules" placeholder="100 cm" value="'.$epaules.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                        <label for="poitrine" >Poitrine:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                        <input type="text" class="form-control" id="poitrine" name="poitrine" placeholder="80 cm" value="'.$poitrine.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                        <label for="cuisse" >Cuisse:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                        <input type="text" class="form-control" id="cuisse" name="cuisse" placeholder="50 cm" value="'.$cuisse.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="trtaille" >Tour de taille:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                        <input type="text" class="form-control" id="trtaille" name="trtaille" placeholder="70 cm" value="'.$trtaille.'"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="masseGraisse" >Masse graisseuse:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="text" class="form-control" id="masseGraisse" name="masseGraisse" placeholder="17.5 %" value="'.$masseGraisse.'"/>
+                                        </div>
+                                    </div>
+								<br>
+                                    
+                                    <br>';
+    
+                            if($idPerf != null)
+                                echo'
+                                
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <button type="button" onclick=\'document.getElementById("monFormulaire").submit()\' class="btn btn-primary" >Confirmer</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="mes_performances.php">
+                                        <button type="button" class="btn btn-danger" >Annuler</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="typePost" value="'.$idPerf.'" />
+                                
+                                ';
+                            else
+                                echo '<a href="#" class="button top-6"  onclick=\'document.getElementById("monFormulaire").submit()\'>Ajouter une performance</a>
+                                      <input type="hidden" name="typePost" value="Ajout" />
+                                        ';
+    
+                                   
+                                   
+                                   
+                       echo '
+                            
+                            </fieldset>
+                        </form>
+                        
+                        
+                ';
+    
+    
+}
+
+
+
 
 
 
