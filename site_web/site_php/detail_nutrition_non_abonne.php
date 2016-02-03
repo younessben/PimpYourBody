@@ -1,7 +1,6 @@
 <?php
     session_start();
     require('authentification.php');
-    include('bibliotheque_fonctions_youness.php');
 ?>
 
 <!DOCTYPE html>
@@ -54,28 +53,78 @@
                     	<h2 class="p3"><span class="color-1">Titre du pogramme de nutrition </span></h2>
                         <p class="p5">Description du programme : At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.</p>
                         <div class="wrap box-1">
-                             <!----------------------------- Affichage des exercices ------------------------------------>
-                                <?php
-                                $liste=programmeNutrition($connexion,1,1);
-                                if(empty($liste)==true)
-                                {
-                                    echo '<p>Il n\'y a aucun exercice pour le moment</p>';
-                                }
-                                else
-                                {
-                                    foreach ($liste as $nutrition) 
-                                    {
-
-                                        affichageNutrition($connexion,$nutrition);
-                                    }
-                                }
-
-                            ?>
                            
+                            <div class="extra-wrap">
+                                <h5 class="p3"><span class="color-5">Repas / Collation MATIN </span></h5>
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th style="width:10%;">Petit Dejeuner</th>
+                                        <th style="width:10%;">Collation matin</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Contenu du programme</td>
+                                        <td>Contenu du programme</td>
+                                      </tr>
+                                    </tbody>
+                                </table>  
+                                <h5 class="p3"><span  class="color-5">Repas / Collation MIDI & AM </span></h5>
+                                 <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th style="width:10%;">Dejeuner</th>
+                                        <th style="width:10%;">Collation apres midi</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Contenu du programme</td>
+                                        <td>Contenu du programme</td>
+                                      </tr>
+                                    </tbody>
+                                </table>  
+                                <h5 class="p3"><span class="color-5">Repas / Collation SOIR </span></h5>
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th style="width:10%;"> Dîner</th>
+                                        <th style="width:10%;">Collation soir</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Contenu du programme</td>
+                                        <td>Contenu du programme</td>
+                                      </tr>
+                                    </tbody>
+                                </table>  
+                            </div>
                         </div>
                         <h2 class="p3 top-2"><span class="color-1">You are</span> in good hands</h2>
                         <p class="p2"><strong>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</strong></p>
                         <p class="p5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                    </div>
+                    <div class="extra-wrap">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="width:10%;">Firstname</th>
+                            <th style="width:10%;">Lastname</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                          </tr>
+                          <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                     <div class="col-2">
                         <h2 class="p6"><span class="color-1">Conseils</span> Exercice</h2>

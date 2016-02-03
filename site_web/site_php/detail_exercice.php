@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php
-require_once 'connexion_bdd.php';
-
     session_start();
     require('authentification.php');
-
 ?>
 <html lang="en">
 <head>
@@ -58,55 +55,30 @@ require_once 'connexion_bdd.php';
                         <div class="wrap box-1">
                             <img src="images/page4-img1.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                
-                                  <div class="form-group">
-                                    <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;
-                                        <?php
-                                                                            
-                                        $result = mysql_query('SELECT NOM where PRENOM like \'Youness\';') or die(mysql_error());
-		                                  //echo 'SELECT NOM where PRENOM like \'Youness\';';
-                                          /*  if(mysql_num_rows($result) > 0) {
-                                                while( $row = mysql_fetch_array($result)) {
-                                                    $cli= $row['NOM'];
-                                                   
-                                                }
-                                            }else {
-                                                $cli = null ;
-                                            }
-                                            echo $cli;*/
-                                        ?>
-                                        </span> </p>
-                                     <p><strong>Nombre de repetion</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;10 </span> </p>
-                                     <p><strong>duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;30 secondes </span> </p> 
+                            <br/> <br/>
+                             <div class="form-group">
+                                      <?php
+                                                 $req="  SELECT * FROM `exercice` natural join `details_exercice`
+                                                 where ID_EXERCICE =".$_GET['idExercice'].";";
+                                                 $reponse= $connexion->prepare($req);
+                                                 $result = $reponse->execute();
+                                                 $donnee= $reponse->fetch();
+                                      echo'
+                                        <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_SERIES'].'</span> </p>
+                                        <p><strong>Nombre de repetition</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_REPETITION'].'</span> </p>
+                                        <p><strong>Duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['DUREE_REPOS'].' secondes </span> </p> 
                                   </div>
                                  
                             </div>
                         </div>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FSJ1cIL0PPk" style="margin-left: 0px;" frameborder="0" allowfullscreen> </iframe>
+                                    <iframe width="560" height="315" src="'.$donnee['LIEN_VIDEO'].'" style="margin-left: 0px;" frameborder="0" allowfullscreen> </iframe>                             
+                                    '
+                                      ?>
                         <h2 class="p3 top-2"><span class="color-1">You are</span> in good hands</h2>
                         <p class="p2"><strong>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</strong></p>
                         <p class="p5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     </div>
-                    <div class="extra-wrap">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th style="width:10%;">Firstname</th>
-                            <th style="width:10%;">Lastname</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                          </tr>
-                          <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+
                     <div class="col-2">
                         <h2 class="p6"><span class="color-1">Conseils</span> Exercice</h2>
                         <img src="images/page4-img2.jpg" alt="" class="img-border">
