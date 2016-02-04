@@ -1,5 +1,4 @@
 
-
 <header>
         <h1><a href="accueil.php">Pimp<strong>Your Body</strong></a></h1>
         <nav>

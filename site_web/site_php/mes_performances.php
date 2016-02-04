@@ -36,6 +36,7 @@
                                 VALUES (:idUtil,:poids,:taille,:bras,:epaules,:poitrine,:cuisse,:trtaille,:date,:masseGraisse)";
             
             $stmt = $connexion->prepare($req);
+            $stmt->bindParam(':date', $date);
         }
         else
         {
@@ -88,7 +89,7 @@
 <html lang="en">
 <head>
     <title>Mes performances</title>
-    <meta charset="utf-8">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">

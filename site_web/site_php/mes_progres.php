@@ -1,13 +1,15 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions.php');
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Mes progres</title>
-    <meta charset="utf-8">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -68,6 +70,8 @@
                             
                             <div id="containerLine" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                             <div id="containerColumn" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            
+                            
                         
                         </div>
                         

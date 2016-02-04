@@ -48,7 +48,7 @@ function listerProduits($cnn,$id)
 
 // Fonction appelé dans les pages: machines.php; poids_libres.php; complementd_alimentaires.php
 // Affiche les informations sur le produit passé en paramètre dans les pages concernées
-function affichageProduit($cnn,$produit) // affiche le titre 
+function affichageProduit($cnn,$produit,$page) // affiche le titre 
 {
     echo 
         '
@@ -72,7 +72,14 @@ function affichageProduit($cnn,$produit) // affiche le titre
                     </div>
                     <div class="col-md-3">
                         <br/><br/><br/><br/>
-                        <button type="button" class="btn btn-primary" >Ajouter au panier</button><br/>
+                        
+                        <a href="ajout_panier.php?idProduit='.$produit[0].'&prixUnitaire='.$produit[3].'&qteProduit=1&page='.$page.'">
+
+                        <button type="button" class="btn btn-primary" >Ajouter au panier</button>
+                        </a>
+                        <br/>
+                               
+                        
                         <a href="produit.php?idProduit='.$produit[0].'" > Plus de détails >></a>
                     </div>
 
@@ -81,6 +88,12 @@ function affichageProduit($cnn,$produit) // affiche le titre
             </div>
 
         ';
+    
+    //ajouterPanier($cnn;$idUtilisateur;$idProduit,$qteCommande,$prixUnitaire)
+    /*
+    
+                                
+        */
 
 
 }
@@ -220,6 +233,22 @@ function listerPerformances($cnn,$id)
        
         
     }
+    
+    /*
+    
+    0 -> ID_PERFORMANCE
+    1 -> ID_UTILISATEUR
+    2 -> POIDS
+    3 -> TAILLE
+    4 -> BRAS
+    5 -> EPAULES
+    6 -> POITRINES
+    7 -> CUISSES
+    8 -> TOUR_TAILLE
+    9 -> TOUR_TAILLE
+    10 -> TOUR_TAILLE
+    
+    */
    
     return $liste;
 }
@@ -277,6 +306,21 @@ function listeDetailsPerformance($cnn,$idPerf)
 
 function afficheFormulairePerf($cnn, $idPerf)
 {
+    /*
+    
+        0 -> ID_PERFORMANCE
+        1 -> ID_UTILISATEUR
+        2 -> POIDS
+        3 -> TAILLE
+        4 -> BRAS
+        5 -> EPAULES
+        6 -> POITRINES
+        7 -> CUISSES
+        8 -> TOUR_TAILLE
+        9 -> DATE_SAISIE
+        10 -> MASSE_GRAISSEUSE
+    
+    */
     
     $poids = "";
     $taille= "";
@@ -438,6 +482,222 @@ function afficheFormulairePerf($cnn, $idPerf)
     
     
 }
+
+function ajouterPanier($cnn,$idUtilisateur,$idProduit,$qteCommande,$prixUnitaire)
+{
+        $date = date('Y-m-d H:i:s');
+    
+        $nbElementPanier=countPanier($cnn,$idUtilisateur);
+        
+        if($nbElementPanier==0)
+        {
+            $montant=0.0;
+            $statut = 'Panier';
+
+            $req="INSERT INTO `commande` (`ID_UTILISATEUR`, `DATE_COMMANDE`, `MONTANT_COMMANDE`, `STATUT_COMMANDE`) 
+                    VALUES (:idUtilisateur,:date,:montant,:statut);     
+
+            ";
+
+
+
+
+            $stmt = $cnn->prepare($req);
+            //$stmt->bindParam(':date', $date);
+
+
+            $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+            $stmt->bindParam(':montant', $montant);
+            $stmt->bindParam(':statut', $statut);
+            $stmt->bindParam(':date', $date);
+            
+            
+            
+
+            $stmt->execute();
+    
+        }
+    
+        $idDerniereCommande= recupDerniereCommande($cnn);
+        echo $idDerniereCommande;
+    
+        $montantLC=intval($qteCommande)*floatval($prixUnitaire);
+    
+        $req=" INSERT INTO `ligne_commande`(ID_COMMANDE,ID_PRODUIT,QUANTITE_COMMANDE,MONTANT_LIGNE_CMD)
+                VALUES (:idCommande,:idProduit,:qteCommande,:montantLC);     
+                
+        ";
+        echo $req;
+        $stmt = $cnn->prepare($req);
+        //$stmt->bindParam(':date', $date);
+        
+        echo $idProduit;
+        $stmt->bindParam(':idCommande', $idDerniereCommande);
+        $stmt->bindParam(':idProduit', $idProduit);
+        $stmt->bindParam(':qteCommande', $qteCommande);
+        $stmt->bindParam(':montantLC', $montantLC);
+        $stmt->execute();
+    
+    
+       
+}
+
+
+//récupère l'id de la dernière commande
+function recupDerniereCommande($cnn)
+{
+    $req="  SELECT max(ID_COMMANDE) FROM commande  
+            ;";
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
+
+
+}
+
+//Vérifie si le panier est vide où s'il existe déjà une commande en cours
+function countPanier($cnn, $idUtilisateur)
+{
+    
+    
+    $req="  SELECT COUNT(*) 
+
+            FROM `commande` 
+            WHERE `ID_UTILISATEUR` = ".$idUtilisateur."
+            AND `STATUT_COMMANDE` like 'Panier' 
+            ;";
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
+   
+}
+
+
+function listerCommandes($cnn, $idUtilisateur,$statut)
+{
+    
+    
+    $req="  SELECT *
+            FROM `commande`
+            WHERE `ID_UTILISATEUR` = ".$idUtilisateur."
+            AND STATUT_COMMANDE like '".$statut."'  
+            ;";
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste, array($donnees['ID_COMMANDE'],$donnees['ID_UTILISATEUR'],$donnees['DATE_COMMANDE'],$donnees['MONTANT_COMANDE'],$donnees['STATUT_COMMANDE']));
+        }
+       
+        
+    }
+   
+    return $liste;
+    
+    /*
+    0->ID_COMMANDE
+    1->ID_UTILISATEUR
+    2->DATE_COMMANDE
+    3->MONTANT_COMANDE
+    4->STATUT_COMMANDE
+    
+    
+    */
+}
+
+
+function listerPanier($cnn, $idUtilisateur)
+{
+     $req="     SELECT * 
+                FROM `commande` 
+                NATURAL JOIN ligne_commande
+                NATURAL JOIN produit
+
+
+                WHERE `ID_UTILISATEUR` = ".$idUtilisateur."
+                AND `STATUT_COMMANDE` like 'Panier'  
+            ;";
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste, array($donnees['ID_PRODUIT'],$donnees['ID_COMMANDE'],$donnees['ID_UTILISATEUR'],$donnees['QUANTITE_COMMANDE'],$donnees['MONTANT_LIGNE_CMD'],$donnees['ID_CATEGORIE'],$donnees['NOM_PDT'],$donnees['PRIX'],$donnees['CHEMIN_IMG_PDT'],$donnees['STOCK'],$donnees['DESC_PDT']));
+        }
+       
+        
+    }
+   
+    return $liste;
+    
+    
+    
+    
+    
+}
+
+function affichageCommandePanier($cnn,$commandePanier) 
+{
+    /*
+   
+    0->ID_PRODUIT
+    1->ID_COMMANDE
+    2->ID_UTILISATEUR
+    3->QUANTITE_COMMANDE
+    4->MONTANT_LIGN_CMD
+    5->ID_CATEGORIE
+    6->NOM_PDT
+    7->PRIX
+    8->CHEMIN_IMG_PDT
+    9->STOCK
+    10->STOCK
+    
+    
+    
+    
+    */
+   
+
+    
+    
+    echo'
+    
+                        <div class="wrap box-1 top-4"> 
+                            <h3>'.$commandePanier[6].'</h2>
+                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
+                            
+                            <div class="extra-wrap">
+                                
+                                <label for="qteTxt">Quantité</label>
+                                <input type="text" class="form-control" id="qteTxt" placeholder="1" value="'.$commandePanier[3].'">
+                                
+                                <p><strong>Prix total</strong></p>
+                                <p style="color:red; font-weight:bold;">'.$commandePanier[4].'€</p>
+                                <a href="traitementSuppressionPanier.php?idCommande='.$commandePanier[1].'&idProduit='.$commandePanier[0].'">
+                                    <button type="button" class="btn btn-danger">Retirer le produit</button>
+                                </a>
+                            </div>
+                        </div>
+                        
+        ';
+
+
+}
+
+
+
+
 
 
 
