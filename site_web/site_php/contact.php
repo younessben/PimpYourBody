@@ -53,7 +53,7 @@ include('bibliotheque_fonctions.php');
                     	<h2><span class="color-1">Nos</span> coordonnées</h2>
                         <div class="map img-border">
                           
-                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"><div><small></iframe>
+                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"></iframe>
 
 
                         </div>
@@ -93,8 +93,7 @@ include('bibliotheque_fonctions.php');
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
+        <?php include('footer.inc.php'); ?> 
     </footer>	
 </div>    
 <script>

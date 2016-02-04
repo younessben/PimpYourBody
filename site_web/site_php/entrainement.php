@@ -102,8 +102,7 @@ include('bibliotheque_fonctions.php');
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2016 PimpYourBody Club</p>
-        <p>COPYRIGHT FRANCE ® <a class="link" href="" target="_blank" rel="nofollow">www.pimpyourbody.org</a></p>
+        <?php include('footer.inc.php'); ?> 
     </footer>	
 </div>    
 <script>

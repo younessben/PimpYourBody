@@ -77,23 +77,25 @@ include('bibliotheque_fonctions.php');
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Mark</td>
-                                    <th scope="row"><a href="#">Suivre ma commande</a></th>
-                                  
-                                </tr>
-                                <tr>
-                                  
-                                  
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Mark</td>
-                                    <th scope="row"><a href="#">Suivre ma commande</a></th>
-                                  
-                                </tr>
+                        <!----------------------------- Affichage des commandes en cours ------------------------------------>
+                                <?php
+                                    $liste=listerCommandeEnCours($connexion,3,'En cours');
+                                    if(empty($liste)==true)
+                                    {
+                                        echo '<p>Il n\'y a aucune commande pour le moment</p>';
+                                    }
+                                    else
+                                    {
+                                        foreach ($liste as $cmdEnCours) 
+                                        {
+
+                                            afficheCommandeEncours($connexion,$cmdEnCours);
+                                        }
+                                    }
+
+
+                                ?>
+                         <!---------------------------------------------------------------------------------------->
                               </tbody>
                             </table>
                             
@@ -130,21 +132,25 @@ include('bibliotheque_fonctions.php');
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Mark</td>
-                                  
-                                </tr>
-                                <tr>
-                                  
-                                  
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Mark</td>
-                                  
-                                </tr>
+                                 <!----------------------------- Affichage des commandes livré ------------------------------------>
+                                <?php
+                                    $liste=listerCommandeEnCours($connexion,3,'Livré');
+                                    if(empty($liste)==true)
+                                    {
+                                        echo '<p>Il n\'y a aucune commande pour le moment</p>';
+                                    }
+                                    else
+                                    {
+                                        foreach ($liste as $cmdLivre) 
+                                        {
+
+                                            afficheCommandeEncours($connexion,$cmdLivre);
+                                        }
+                                    }
+
+
+                                ?>
+                         <!---------------------------------------------------------------------------------------->
                               </tbody>
                             </table>
                             
@@ -183,8 +189,7 @@ include('bibliotheque_fonctions.php');
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
+        <?php include('footer.inc.php'); ?> 
     </footer> 
 </div>    
 <script>

@@ -131,8 +131,7 @@ if (Auth::islog()){
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2016 PIMPYOURBODY</p>
-        <p>Site réalisé par Yoann WOLF, Ahmet IMRE, Youness BEN</p>
+        <?php include('footer.inc.php'); ?> 
     </footer>	
 </div>    
 <script>

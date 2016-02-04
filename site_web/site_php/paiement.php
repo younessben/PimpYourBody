@@ -49,16 +49,28 @@
             	<div class="wrap block-2">
                     
                     <div class="col-4">
-                    	<h2 class="p3"><span class="color-1">Paiement</span> training</h2>
+                    	<h2 class="p3"><span class="color-1">Paiement</span></h2>
                        
                         <div class="wrap box-1 top-4">
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
                                 
-                                <p>Montant total à payer: <?php echo sumMntCommande($connexion,$idCommande)?>
+                                <p>Montant total à payer: 
+                                <?php 
+                                    $idCommande=recupIdPanier($connexion,3);
+                                    echo sumMntCommande($connexion,$idCommande);
+                                    
+                                    
+                                    ?> €
                                 </p>
                             </div>
                         </div>
+                        
+                        
+                        <?php
+                        $idCommande=recupIdPanier($connexion,3);
+                        echo'<div class="btns"><a href="validation_commande.php?idCommande='.$idCommande.'" class="button" >Valider la commande</a></div>';
+                        
+                        ?>
                         
                     </div>
                 </div>
@@ -69,8 +81,7 @@
     </section> 
 <!--==============================footer=================================-->
     <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
+        <?php include('footer.inc.php'); ?> 
     </footer>	
 </div>    
 <script>
