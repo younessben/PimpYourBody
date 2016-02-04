@@ -78,6 +78,7 @@ include('bibliotheque_fonctions.php');
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/cufon-yui.js"></script>

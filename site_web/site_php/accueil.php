@@ -9,7 +9,10 @@
 <html lang="fr">
 <head>
     <title>Accueil</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">        
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+        
+
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -79,7 +82,7 @@
                 </li>
                 <li><img src="images/ahmet.jpg" alt="">
                     <div class="banner">
-                        <p class="font-1">Bien Etre</span></p>
+                        <p class="font-1">Bien Etre</p>
                         <p class="font-2">Fitness, bien-être, beauté, détente... notre site  vous propose une multitude d'exercices et conseils qui s’adressent à tous le monde y compris les moins sportifs !</p>
                         <a href="nutrition.php">Savoir plus</a>
                     </div>
