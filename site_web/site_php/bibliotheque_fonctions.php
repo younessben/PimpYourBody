@@ -686,13 +686,24 @@ function affichageCommandePanier($cnn,$commandePanier)
         echo'
                             <div class="extra-wrap">
                                 
-                                <label for="qteTxt">Quantité</label>
-                                <input type="text" class="form-control" id="qteTxt" placeholder="1" value="'.$commandePanier[3].'">
-                                
+                                <h4>Quantité:</h4>
+                                    <div class="pull-left">
+                                    <a href="traitement_qte_panier.php?idProduit='.$commandePanier[0].'&idCommande='.$commandePanier[1].'&qteCommande='.$commandePanier[3].'&prixUnitaire='.$commandePanier[7].'&type=-1">
+                                    <button class="btn btn-primary pull-left">-</button>
+                                    </a>
+
+                                    <input type="text" class="form-control pull-left" id="qteTxt" placeholder="1" value="'.$commandePanier[3].'" disabled/>
+                                    
+                                    <a href="traitement_qte_panier.php?idProduit='.$commandePanier[0].'&idCommande='.$commandePanier[1].'&qteCommande='.$commandePanier[3].'&prixUnitaire='.$commandePanier[7].'&type=1">
+                                    <button class="btn btn-primary ">+</button>
+                                    </a>
+                                    </div>
                                 <p><strong>Prix total</strong></p>
                                 <p style="color:red; font-weight:bold;">'.$commandePanier[4].'€</p>
                                 <a href="supprime_panier.php?idCommande='.$commandePanier[1].'&idProduit='.$commandePanier[0].'">
+                                    
                                     <button type="button" class="btn btn-danger">Retirer le produit</button>
+                                    
                                 </a>
                             </div>
                         </div>
@@ -707,47 +718,66 @@ function supprimerPanier($cnn,$idUtilisateur,$idProduit,$idCommande)
         
     
         $nbElementPanier=countPanier($cnn,$idUtilisateur);
-        
-    
-        $req="DELETE FROM `ligne_commande` 
+        $req="      DELETE FROM `ligne_commande` 
                     WHERE ID_PRODUIT =:idProduit
                     AND  ID_COMMANDE=:idCommande; "; 
         if($nbElementPanier==1)
         {
-
-                $req=$req."
-                    
-                    
+            $req=$req."
                     DELETE FROM commande
                     WHERE ID_COMMANDE=:idCommande;
-
             ";
             
-            
         }
-            
+
+        $stmt = $cnn->prepare($req);
+        $stmt->bindParam(':idProduit', $idProduit);
+        $stmt->bindParam(':idCommande', $idCommande);
+        $stmt->execute();
+
+       
+}
 
 
-
-
-            $stmt = $cnn->prepare($req);
-
-            $stmt->bindParam(':idProduit', $idProduit);
-            $stmt->bindParam(':idCommande', $idCommande);
-           
-            
-            
-            
-
-            $stmt->execute();
+function changeQtePanier($cnn,$idProduit,$idCommande,$qteLC,$mntLC)
+{
     
+    
+    $req="    
+    UPDATE `ligne_commande` 
+    SET `QUANTITE_COMMANDE`=:qteLC,`MONTANT_LIGNE_CMD`=:mntLC 
+    WHERE ID_PRODUIT = :idProduit AND ID_COMMANDE=:idCommande";
+    
+    
+
+    $stmt = $cnn->prepare($req);
+    $stmt->bindParam(':idProduit', $idProduit);
+    $stmt->bindParam(':idCommande', $idCommande);
+    $stmt->bindParam(':qteLC', $qteLC);
+    $stmt->bindParam(':mntLC', $mntLC);
+    $stmt->execute();
+    
+    
+}
+
+
+function sumMntCommande($cnn,$idCommande)
+{
+    
+    
+
+    $req="  
+        SELECT SUM(`MONTANT_LIGNE_CMD`)
+        FROM `ligne_commande`
+        WHERE `ID_COMMANDE`=".$idCommande";";
         
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
     
     
-       
-    
-    
-       
 }
 
 
@@ -765,3 +795,4 @@ function supprimerPanier($cnn,$idUtilisateur,$idProduit,$idCommande)
 
 
 ?>
+

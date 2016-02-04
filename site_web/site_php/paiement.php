@@ -36,7 +36,7 @@
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body onload="init('liEntrainement')">
+<body>
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->
@@ -49,23 +49,17 @@
             	<div class="wrap block-2">
                     
                     <div class="col-4">
-                    	<h2 class="p3"><span class="color-1">Our</span> training</h2>
-                        <p class="p2"><strong>Nam liber tempor cum soluta nobis eleifend option congue nihil</strong></p>
-                        <p>Imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</p>
+                    	<h2 class="p3"><span class="color-1">Paiement</span> training</h2>
+                       
                         <div class="wrap box-1 top-4">
                             <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                <p class="p2"><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilis lorem ipsum dolor.</p>
+                                
+                                <p>Montant total à payer: <?php echo sumMntCommande($connexion,$idCommande)?>
+                                </p>
                             </div>
                         </div>
-                        <div class="wrap box-1 top-2">
-                            <img src="images/page2-img2.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                                <p class="p2"><strong>Ut wisi enim ad minim veniamis nostrud</strong></p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim.</p>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
