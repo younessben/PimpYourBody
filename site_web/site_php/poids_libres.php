@@ -67,7 +67,7 @@
                                 foreach ($liste as $produit) 
                                 {
                                     
-                                    affichageProduit($connexion,$produit);
+                                    affichageProduit($connexion,$produit,"poids_libres.php");
                                 }
                             }
 

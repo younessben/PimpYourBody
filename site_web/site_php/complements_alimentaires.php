@@ -69,7 +69,7 @@
                                 foreach ($liste as $produit) 
                                 {
                                     
-                                    affichageProduit($connexion,$produit);
+                                    affichageProduit($connexion,$produit,"complements_alimentaires.php");
                                 }
                             }
 

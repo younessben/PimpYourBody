@@ -1,6 +1,23 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions.php');
+?>
+
+
+<?php
+
+ $nbPanier=countPanier($connexion, 3);
+
+
+
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,66 +69,29 @@
                     <div class="col-4" id="divTitle">
                       <h2 class="p3"><span class="color-1">Mon</span> panier</h2>
                         
-                        <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <h3>Titre du produit</h2>
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
+                         <!----------------------------- Affichage des produits ------------------------------------>
+                        <?php
+                            $liste=listerPanier($connexion,3);
+                            if(empty($liste)==true)
+                            {
+                                echo '<p>Il n\'y a aucun produit pour le moment</p>';
+                            }
+                            else
+                            {
+                                foreach ($liste as $commandePanier) 
+                                {
+                                    
+                                    affichageCommandePanier($connexion,$commandePanier);
+                                }
+                            }
+                        
                             
-                            <div class="extra-wrap">
-                                
-                                <label for="qteTxt">Quantité</label>
-                                <input type="text" class="form-control" id="qteTxt" placeholder="1">
-                                
-                                <p><strong>Prix total</strong></p>
-                                <p style="color:red; font-weight:bold;">150€</p>
-                                <button type="button" class="btn btn-danger">Retirer le produit</button>
-                               
-                            </div>
-                        </div>
-                      <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <h3>Titre du produit</h2>
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
+                        
                             
-                            <div class="extra-wrap">
-                                
-                                <label for="qteTxt">Quantité</label>
-                                <input type="text" class="form-control" id="qteTxt" placeholder="1">
-                                
-                                <p><strong>Prix total</strong></p>
-                                <p style="color:red; font-weight:bold;">150€</p>
-                                <button type="button" class="btn btn-danger">Retirer le produit</button>
-                               
-                            </div>
-                        </div>
-                        <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <h3>Titre du produit</h2>
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
-                            
-                            <div class="extra-wrap">
-                                
-                                <label for="qteTxt">Quantité</label>
-                                <input type="text" class="form-control" id="qteTxt" placeholder="1">
-                                
-                                <p><strong>Prix total</strong></p>
-                                <p style="color:red; font-weight:bold;">150€</p>
-                                <button type="button" class="btn btn-danger">Retirer le produit</button>
-                               
-                            </div>
-                        </div>
-                        <div class="wrap box-1 top-4"> <!-- top-4 laisse un grand espace entre la div courante et l'élément du dessus' -->
-                            <h3>Titre du produit</h2>
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
-                            
-                            <div class="extra-wrap">
-                                
-                                <label for="qteTxt">Quantité</label>
-                                <input type="text" class="form-control" id="qteTxt" placeholder="1">
-                                
-                                <p><strong>Prix total</strong></p>
-                                <p style="color:red; font-weight:bold;">150€</p>
-                                <button type="button" class="btn btn-danger">Retirer le produit</button>
-                               
-                            </div>
-                        </div>
+
+
+                        ?>
+                         <!---------------------------------------------------------------------------------------->
                         <div class="btns"><a href="paiement.php" class="button" >Proceder au paiement</a></div>
                         
                         <nav>

@@ -36,6 +36,7 @@
                                 VALUES (:idUtil,:poids,:taille,:bras,:epaules,:poitrine,:cuisse,:trtaille,:date,:masseGraisse)";
             
             $stmt = $connexion->prepare($req);
+            $stmt->bindParam(':date', $date);
         }
         else
         {

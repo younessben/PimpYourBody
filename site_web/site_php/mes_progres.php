@@ -1,6 +1,8 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +70,8 @@
                             
                             <div id="containerLine" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                             <div id="containerColumn" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            
+                            
                         
                         </div>
                         

@@ -65,7 +65,7 @@
                                 foreach ($liste as $produit) 
                                 {
                                     
-                                    affichageProduit($connexion,$produit);
+                                    affichageProduit($connexion,$produit,"machines.php");
                                 }
                             }
                         

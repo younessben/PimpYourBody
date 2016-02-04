@@ -66,7 +66,23 @@
                   </ul>
                 </li>
                 <li id="liEntrainement"><a href="entrainement.php">Entrainement</a></li>
-                <li id="liNutrition"><a href="nutrition.php">Nutrition</a></li>
+                
+                
+                <?php   
+                   
+                    
+                    if (Auth::islog()){
+                        echo
+                        '
+                            <li id="liNutrition"><a href="detail_nutrition.php">Nutrition</a></li>
+                        
+                        ';
+                    }else{
+                        echo '<li id="liNutrition"><a href="nutrition.php">Nutrition</a></li>';
+                    }
+                
+                ?>
+                
                 <li id="liContact"><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
