@@ -8,7 +8,7 @@ include('bibliotheque_fonctions.php');
 <html lang="en">
 <head>
     <title>Entrainement</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -55,20 +55,20 @@ include('bibliotheque_fonctions.php');
                          </p>
                         <div class="wrap box-1">
                              <!----------------------------- Affichage des exercices ------------------------------------>
-                                <?php
-                                $liste=listerExercices($connexion,1,1);
-                                if(empty($liste)==true)
-                                {
-                                    echo '<p>Il n\'y a aucun exercice pour le moment</p>';
-                                }
-                                else
-                                {
-                                    foreach ($liste as $exercice) 
+                                <?php                            
+                                    $liste=listerExercices($connexion,1,1);
+                                    if(empty($liste)==true)
                                     {
-
-                                        affichageExercices($connexion,$exercice);
+                                        echo '<p>Il n\'y a aucun exercice pour le moment</p>';
                                     }
-                                }
+                                    else
+                                    {
+                                        foreach ($liste as $exercice) 
+                                        {
+
+                                            affichageExercices($connexion,$exercice);
+                                        }
+                                    }
 
                             ?>
                     </div>

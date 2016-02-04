@@ -1,7 +1,7 @@
 <?php
     session_start();
     require('authentification.php');
-include('bibliotheque_fonctions.php');
+    include('bibliotheque_fonctions.php');
 ?>
 
 
@@ -9,8 +9,7 @@ include('bibliotheque_fonctions.php');
 <html lang="fr">
 <head>
     <title>Accueil</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-        
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">        
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -28,7 +27,7 @@ include('bibliotheque_fonctions.php');
     <script src="js/Asap_400.font.js"></script>
     <script src="js/Coolvetica_400.font.js"></script>
 	<script src="js/Kozuka_M_500.font.js"></script>
-    <script src="js/cufon-replace.js"></script>
+ <!-- <script src="js/cufon-replace.js"></script> -->
     <script src="js/FF-cash.js"></script>
     <script src="js/myscript.js"></script>
     <script>
@@ -74,7 +73,7 @@ include('bibliotheque_fonctions.php');
                  <li><img src="images/hercules.png" alt="">
                     <div class="banner">
                         <p class="font-1">Entrainez<span>Vous</span></p>
-                        <p class="font-2">Découvrez nos exercices de musculation, classés par zones musculaires et expliqués par le coach. Tous les exercices sont accompagnés d'une vidéo pour une exécution parfaite.</p>
+                        <p class="font-2">Découvrez nos exercices de musculation, classés par zones musculaires et expliqués par le coach. Tous les exercices sont accompagnés d'une vidéo....</p>
                         <a href="entrainement.php">Savoir plus</a>
                     </div>
                 </li>

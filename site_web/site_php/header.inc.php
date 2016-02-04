@@ -72,7 +72,20 @@
                     <li><a href="complements_alimentaires.php">Complements alimentaires</a></li>
                   </ul>
                 </li>
-                <li id="liEntrainement"><a href="entrainement.php">Entrainement</a></li>
+                <?php   
+                   
+                    
+                    if (Auth::islog()){
+                        echo
+                        '
+                        <li id="liEntrainement"><a href="entrainement.php">Entrainement</a></li>
+                        ';
+                    }else{
+                        echo '<li id="liEntrainement"><a href="entrainement_non_abonne.php">Entrainement</a></li>';
+                    }
+                
+                ?>
+               
                 
                 
                 <?php   

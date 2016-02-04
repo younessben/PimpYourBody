@@ -9,7 +9,7 @@ include('bibliotheque_fonctions.php');
 <html lang="en">
 <head>
     <title>detail_nutrition</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">  
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -53,9 +53,9 @@ include('bibliotheque_fonctions.php');
             	<div class="wrap block-2">
                     <div class="col-1">
                     	
-                             <!----------------------------- Affichage des exercices ------------------------------------>
+                             <!----------------------------- Affichage des programme nutrition ------------------------------------>
                                 <?php
-                                $liste=programmeNutrition($connexion,4,1);
+                                $liste=programmeNutrition($connexion,$_SESSION['idUtilisateur'],1);
                                 if(empty($liste)==true)
                                 {
                                     echo '<p>Il n\'y a aucun exercice pour le moment</p>';

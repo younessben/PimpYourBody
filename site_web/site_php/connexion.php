@@ -29,6 +29,14 @@ if (Auth::islog()){
 							$_SESSION['Auth'] = array(
 								'email'=> $email,
 								'password'=>$password);
+                                    $sql = 'SELECT ID_UTILISATEUR FROM utilisateur WHERE email like :email ';
+                                    $req = $connexion->prepare($sql);
+                                    $req->bindParam(':email', $email);
+                                    $req->execute();
+                                    $donnee = $req->fetch();
+                                    
+                            $_SESSION['idUtilisateur']=$donnee[0];
+                            
 							header('Location:mes_informations.php');
 						}else
 							{

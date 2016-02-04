@@ -7,7 +7,7 @@ include('bibliotheque_fonctions.php');
 <html lang="en">
 <head>
     <title>Trainings</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">  
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -53,14 +53,14 @@ include('bibliotheque_fonctions.php');
                     	<h2 class="p3"><span class="color-1">Programmes de musculation</span> tous niveaux</h2>
                         <p class="p2"><strong>Quand on fait de la musculation, il est important de mettre en place un programme correspondant à votre objectif. Celui-ci peut être de gagner du muscle ou du poids, vous débarrasser de kilos en trop, préparer une saison sportive ou simplement retrouver et maintenir sa forme. </strong></p>
                         <p class="p5">Vous trouverez ici différents programmes de musculation, pour la prise de masse, de force ou la perte de poids. Que vous soyez débutants ou expérimenté, nos programmes et conseils vous aideront à progresser au mieux. Il n'y a plus qu'à vous laisser guider.
-                        <a href="inscription.php" style="">CLIQUEZ ICI POUR VOUS INSCRIRE</a>
+                        <a href="inscription.php" style="">CLIQUEZ ICI POUR VOUS CONNECTER</a>
                          </p>
                         <div class="wrap box-1">
                             <img src="images/abdos2.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
                                 <p class="p2"><strong>Abdominaux : 8 minutes en enfer !</strong></p>
                                 <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
-                                <a href="detail_exercice.php" class="button top-6">Faire exercice</a>
+                                <a href="connexion.php" class="button top-6">Faire exercice</a>
                             </div>
                         </div>
                         <br/>
@@ -69,7 +69,7 @@ include('bibliotheque_fonctions.php');
                             <div class="extra-wrap">
                                 <p class="p2"><strong>Un dos puissant en "V"</strong></p>
                                 <p>Le dos est le groupe musculaire le plus vaste du corps. Il faudra varier les mouvements pour solliciter tous les nombreux muscles qui le composent.</p>
-                                <a href="inscription.php" class="button top-6">Faire exercice</a>
+                                <a href="connexion.php" class="button top-6">Faire exercice</a>
                             </div>
                              <br/>
                             <br/>
@@ -78,7 +78,7 @@ include('bibliotheque_fonctions.php');
                             <div class="extra-wrap">
                                 <p class="p2"><strong>Faites exploser vos bras !</strong></p>
                                 <p>Obtenir des gros bras est le souhait de bon nombre de pratiquants de musculation qui squattent les barres et machines à biceps et triceps.</p>
-                                <a href="inscription.php" class="button top-6">Faire exercice</a>
+                                <a href="connexion.php" class="button top-6">Faire exercice</a>
                             </div>
                         </div>
                     </div>
