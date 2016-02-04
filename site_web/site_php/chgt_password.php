@@ -15,9 +15,10 @@ include('bibliotheque_fonctions.php');
                         $new_password = sha1($_POST['new_password']);//On crypte le mot de passe pour ne pas l'avoir en clair dans la BDD
                         //Mis à jour Password
                         $q = array('new_password'=>$new_password,'email'=>$email);
-                        $sql = 'UPDATE utilisateur SET password=:new_password WHERE email=:email' ;
+                        $sql = 'UPDATE utilisateur SET mot_de_passe = :new_password WHERE email=:email' ;
                         $req = $connexion -> prepare ($sql);
                         $req->execute($q);
+                        var_dump($q);
                         header('Location:connexion.php');
                     }elseif($_POST['new_password']!=$_POST['confirm_password'])
                         {
