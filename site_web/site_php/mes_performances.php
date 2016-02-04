@@ -89,7 +89,7 @@
 <html lang="en">
 <head>
     <title>Mes performances</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
