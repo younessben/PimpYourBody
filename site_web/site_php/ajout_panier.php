@@ -5,7 +5,7 @@
 
 echo $_GET['idProduit'].','.$_GET['qteProduit'].','.$_GET['prixUnitaire'].',';
 ajouterPanier($connexion,3,$_GET['idProduit'],$_GET['qteProduit'],$_GET['prixUnitaire']);
-header('Location:'.$_POST['page']);
+header('Location:'.$_GET['page']);
 
 
 
