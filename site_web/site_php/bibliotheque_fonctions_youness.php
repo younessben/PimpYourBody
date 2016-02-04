@@ -1,7 +1,5 @@
 <?php
 
-
-
 /*
 ID_PRODUIT          -> 0
 NOM_PDT             -> 1
@@ -25,7 +23,7 @@ MUSCLE_CONCERNE     -> 7
 function listerExercices($cnn,$id,$IdProg)
 {
         $req="  SELECT * FROM `programme_entrainement` natural join `exercice`
-                     WHERE ID_PROG_ENTR = '$IdProg';";
+                     WHERE ID_PROG_ENTR = ".$IdProg.";";
     $reponse= $cnn->prepare($req);
    
     
@@ -34,7 +32,7 @@ function listerExercices($cnn,$id,$IdProg)
     {
          while ($donnees = $reponse->fetch())
         {
-            array_push($liste, array($donnees['NOM_EXERCICE'],$donnees['DESC_EXERCICE'],$donnees['CHEMIN_IMG_EX'],$donnees['ID_EXERCICE']));
+            array_push($liste, array($donnees['NOM_EXERCICE'],$donnees['DESC_EXERCICE'],$donnees['CHEMIN_IMG_EX'],$donnees['ID_EXERCICE'],$donnees['CHEMIN_IMG_DEMO']));
         }
     }
    
@@ -71,8 +69,10 @@ function affichageExercices($cnn,$exercice) // affiche le titre
 
 function programmeNutrition($cnn,$id,$IdProgN)
 {
-        $req="  SELECT * FROM `programme_nutrition`
-                     WHERE ID_PROG_NUTR = '$IdProgN';";
+        $req="  SELECT * FROM `programme_nutrition` natural join `utilisateur`
+                     WHERE ID_UTILISATEUR = ".$id.";";
+    
+
     $reponse= $cnn->prepare($req);
    
     
@@ -81,7 +81,7 @@ function programmeNutrition($cnn,$id,$IdProgN)
     {
          while ($donnees = $reponse->fetch())
         {
-            array_push($liste, array($donnees['NOM_PROGN'],$donnees['DUREE_PROGN'],$donnees['PETIT_DEJ'],$donnees['COL_MATIN'],$donnees['DEJEUNER'],$donnees['COL_AM'],$donnees['DINER'],$donnees['COL_SOIR']));
+            array_push($liste, array($donnees['NOM_PROGN'],$donnees['DUREE_PROGN'],$donnees['PETIT_DEJ'],$donnees['COL_MATIN'],$donnees['DEJEUNER'],$donnees['COL_AM'],$donnees['DINER'],$donnees['COL_SOIR'],$donnees['DESC_PROGN']));
         }
     }
    
@@ -93,6 +93,9 @@ function affichageNutrition($cnn,$nutrition) // affiche le titre
 {
     echo 
         '
+            <h2 class="p3"><span class="color-1">Programme de nutrition :'.$nutrition[0].'</span></h2>
+                        <p class="p5">'.$nutrition[8].'</p>
+                        <div class="wrap box-1">
             <div class="wrap box-1 top-4"> 
         ';
             echo'
@@ -146,4 +149,94 @@ function affichageNutrition($cnn,$nutrition) // affiche le titre
             </div>
 
         ';
+}
+function listerProgrammes($cnn)
+{
+        $req="  SELECT * FROM `programme_entrainement`;";
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste, array($donnees['ID_PROG_ENTR'],$donnees['NOM_PROGE'],$donnees['DESC_PROGE'],$donnees['CHEMIN_IMG_PRG']));
+        }
+    }
+   
+    return $liste;
+}
+
+function affichageProgrammes($cnn,$programme) // affiche le titre 
+{
+    echo 
+        '
+            <div class="wrap box-1">
+        ';
+            if($programme[3] == null)
+            {
+                echo '<img src="images/img_vide.jpg" alt="" class="img-border img-indent">';
+            }
+            else
+                echo '<img src="'.$programme[3].'" alt="" class="img-border img-indent">';
+
+            echo'
+                                <div class="extra-wrap">
+                                    <p class="p2"><strong>'.$programme[1].'</strong></p>
+                                    <p>'.$programme[2].'</p>
+                                    <a href="mes_performances.php" class="button top-6">Suivre le programme</a>
+                                </div>
+                            </div>
+                            <br/>
+        ';
+}
+
+
+function listerConseils($cnn,$id,$IdProg)
+{
+        $req="  SELECT * FROM `programme_entrainement` natural join `exercice`
+                     WHERE ID_PROG_ENTR = ".$IdProg.";";
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste, array($donnees['NOM_EXERCICE'],$donnees['DESC_EXERCICE'],$donnees['CHEMIN_IMG_EX'],$donnees['ID_EXERCICE'],$donnees['CHEMIN_IMG_DEMO']));
+        }
+    }
+   
+    return $liste;
+}
+
+
+function affichageConseils($cnn,$conseils) // affiche le titre 
+{
+    
+    echo'
+    <div class="col-2">
+    
+     <h2 class="p6"><span class="color-1">Conseils</span> Exercice</h2>
+    ';      
+                    if($conseils[4] == null)
+                    {
+                        echo '<img src="images/img_vide.jpg" alt="" class="img-border">';
+                    }
+                    else
+                echo '<img src="'.$conseils[4].'" alt="" class="img-border">';
+    echo'
+                        <p class="p2 top-6"><strong>Conseil 1</strong></p>
+                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+
+                        <p class="p2 top-6"><strong>Conseil 2</strong></p>
+                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+
+                        <p class="p2 top-6"><strong>Conseil 3</strong></p>
+                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        
+                    </div>
+    ';
 }

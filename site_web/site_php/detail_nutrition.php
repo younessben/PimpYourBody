@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Produit</title>
-    <meta charset="utf-8">
+    <title>detail_nutrition</title>
+    <meta charset="utf-8"> 
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -51,12 +51,10 @@
           	<div class="box-shadow">
             	<div class="wrap block-2">
                     <div class="col-1">
-                    	<h2 class="p3"><span class="color-1">Titre du pogramme de nutrition </span></h2>
-                        <p class="p5">Description du programme : At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.</p>
-                        <div class="wrap box-1">
+                    	
                              <!----------------------------- Affichage des exercices ------------------------------------>
                                 <?php
-                                $liste=programmeNutrition($connexion,1,1);
+                                $liste=programmeNutrition($connexion,4,1);
                                 if(empty($liste)==true)
                                 {
                                     echo '<p>Il n\'y a aucun exercice pour le moment</p>';

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions_youness.php');
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +64,8 @@
                     
                     <div id="divTitle">
                       <h2 class="p3"><span class="color-1">Mon</span> objectif</h2>
-                        
-                        <div id="divContent">
+                        <!-- 
+                            <div id="divContent">
                             <div class="wrap box-1">
                                 <img src="images/prise_de_masse.png" alt="" class="img-border img-indent">
                                 <div class="extra-wrap">
@@ -101,9 +102,26 @@
                                 </div>
                             </div>
                             
-                        </div>
+                        </div> 
+                        -->
                         
-                        
+                          <!----------------------------- Affichage des programmes ------------------------------------>
+                                <?php
+                                $liste=listerProgrammes($connexion);
+                                if(empty($liste)==true)
+                                {
+                                    echo '<p>Il n\'y a aucun programme pour le moment</p>';
+                                }
+                                else
+                                {
+                                    foreach ($liste as $programme) 
+                                    {
+
+                                        affichageProgrammes($connexion,$programme);
+                                    }
+                                }
+
+                            ?>
                         
                         
                         

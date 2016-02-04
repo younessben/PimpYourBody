@@ -69,25 +69,25 @@
           <div class="grid_12">
             <div class="slider">
               <ul class="items">
-                 <li><img src="images/slider-1.jpg" alt="">
+                 <li><img src="images/hercules.png" alt="">
                     <div class="banner">
-                        <p class="font-1">Gagner<span>du muscle</span></p>
-                        <p class="font-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</p>
-                        <a href="#">Read More</a>
+                        <p class="font-1">Entrainez<span>Vous</span></p>
+                        <p class="font-2">Découvrez nos exercices de musculation, classés par zones musculaires et expliqués par le coach. Tous les exercices sont accompagnés d'une vidéo pour une exécution parfaite.</p>
+                        <a href="entrainement.php">Savoir plus</a>
                     </div>
                 </li>
                 <li><img src="images/slider-2.jpg" alt="">
                     <div class="banner">
-                        <p class="font-1">Get Free<span>Training</span></p>
-                        <p class="font-2">Liquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
-                        <a href="#">Read More</a>
+                        <p class="font-1">Bien Etre</span></p>
+                        <p class="font-2">Fitness, bien-être, beauté, détente... notre site  vous propose une multitude d'exercices et conseils qui s’adressent à tous le monde y compris les moins sportifs !</p>
+                        <a href="nutrition.php">Savoir plus</a>
                     </div>
                 </li>
-                <li><img src="images/slider-3.jpg" alt="">
+                <li><img src="images/muscu.jpg" alt="">
                     <div class="banner">
-                        <p class="font-1">Join<span>our team</span></p>
-                        <p class="font-2">Liquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
-                        <a href="#">Read More</a>
+                        <p class="font-1">Plus<span>de muscles</span></p>
+                        <p class="font-2">Être mince ou avoir des gros muscles est en partie une question d’entraînement, et en partie une question d’équilibre nutritionnel.</p>
+                        <a href="entrainement.php">Savoir plus</a>
                     </div>
                 </li>
               </ul>
@@ -102,7 +102,7 @@
           </div>	
           <div class="grid_12 top-1">
           	<div class="block-1 box-shadow">
-            	<p class="font-3">Fitness Club is one of <a class="color-1" href="http://blog.templatemonster.com/free-website-templates/" target="_blank" rel="nofollow">free website templates</a> created by TemplateMonster. This website template is optimized for 1280X1024 screen resolution. This <a href="http://blog.templatemonster.com/2012/04/02/free-website-template-jquery-slider-fitness-club/" class="color-1">Fitness Club Template</a> goes with 2 packages – with PSD source files and without them. PSD source files are available for free for the registered members of TemplateMonster.com.</p>
+            	<p class="font-3"> PimpYourBody est une plateforme web gratuite qui pour objectif de vous accomagner et vous proposer des programmes de sport et de nutrition afin de garder la forme et la bonne humeur, PimpYourBody propose des programmmes pour les débutants et exprimentés en fonctions de vos objectifs, n'hésitez pas à vos inscrire pour beneficier des programmes et cours gratuits.</p>
             </div>
           </div>
           <div class="grid_12 top-1">

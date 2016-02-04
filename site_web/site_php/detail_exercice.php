@@ -2,6 +2,7 @@
 <?php
     session_start();
     require('authentification.php');
+    include('bibliotheque_fonctions_youness.php');
 ?>
 <html lang="en">
 <head>
@@ -50,20 +51,24 @@
           	<div class="box-shadow">
             	<div class="wrap block-2">
                     <div class="col-1">
-                    	<h2 class="p3"><span class="color-1">Titre de l'exercice </span></h2>
-                        <p class="p5">Description de l'exercice : At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.</p>
-                        <div class="wrap box-1">
-                            <img src="images/page4-img1.jpg" alt="" class="img-border img-indent">
-                            <div class="extra-wrap">
-                            <br/> <br/>
-                             <div class="form-group">
-                                      <?php
+                            <?php
                                                  $req="  SELECT * FROM `exercice` natural join `details_exercice`
                                                  where ID_EXERCICE =".$_GET['idExercice'].";";
                                                  $reponse= $connexion->prepare($req);
                                                  $result = $reponse->execute();
                                                  $donnee= $reponse->fetch();
-                                      echo'
+                        echo'
+                    	<h2 class="p3"><span class="color-1">Exercice : </span>'.$donnee['NOM_EXERCICE'].' </span></h2>
+                        <p class="p5">'.$donnee['DESC_EXERCICE'].'</p>
+                        <div class="wrap box-1">
+                            
+                                  
+                          
+                            <img src="'.$donnee['CHEMIN_IMG_EX'].'" alt="" class="img-border img-indent">
+                            <div class="extra-wrap">
+                            <br/> <br/>
+                             <div class="form-group">
+                                      
                                         <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_SERIES'].'</span> </p>
                                         <p><strong>Nombre de repetition</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_REPETITION'].'</span> </p>
                                         <p><strong>Duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['DUREE_REPOS'].' secondes </span> </p> 
@@ -71,27 +76,28 @@
                                  
                             </div>
                         </div>
-                                    <iframe width="560" height="315" src="'.$donnee['LIEN_VIDEO'].'" style="margin-left: 0px;" frameborder="0" allowfullscreen> </iframe>                             
-                                    '
-                                      ?>
-                        <h2 class="p3 top-2"><span class="color-1">You are</span> in good hands</h2>
-                        <p class="p2"><strong>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</strong></p>
-                        <p class="p5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                        <br/>
+                                    '.$donnee['LIEN_VIDEO'].'                 
                     </div>
 
-                    <div class="col-2">
-                        <h2 class="p6"><span class="color-1">Conseils</span> Exercice</h2>
-                        <img src="images/page4-img2.jpg" alt="" class="img-border">
+                  <div class="col-2">
+              
+                       
+                        <h2 class="p6"><span class="color-1">Muscles</span> Concernes</h2>
+                        <img src="'.$donnee['CHEMIN_IMG_DEMO'].'" alt="" class="img-border">
                         <p class="p2 top-6"><strong>Conseil 1</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        <p class="p4">Boire 3 à 4 gorgées d’eau toutes les 30 minutes d’exercice, à l’entraînement comme en compétition..</p>
 
                         <p class="p2 top-6"><strong>Conseil 2</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        <p class="p4"> ne jamais fumer pendant l’heure qui précède ni les deux heures qui suivent une pratique sportive.</p>
 
                         <p class="p2 top-6"><strong>Conseil 3</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
-                        
-                    </div>
+                        <p class="p4">signaler à votre médecin tout malaise survenant à l’effort ou juste après</p>
+                       
+                   </div>
+                    '
+                      ?>
+                            
                 </div>
             </div>
           </div>
