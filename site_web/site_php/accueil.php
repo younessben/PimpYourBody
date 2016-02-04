@@ -80,7 +80,7 @@
                         <a href="entrainement.php">Savoir plus</a>
                     </div>
                 </li>
-                <li><img src="images/ahmet.jpg" alt="">
+                <li><img src="images/BG.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Bien Etre</p>
                         <p class="font-2">Fitness, bien-être, beauté, détente... notre site  vous propose une multitude d'exercices et conseils qui s’adressent à tous le monde y compris les moins sportifs !</p>

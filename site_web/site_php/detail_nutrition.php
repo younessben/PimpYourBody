@@ -72,21 +72,18 @@
                             ?>
                            
                         </div>
-                        <h2 class="p3 top-2"><span class="color-1">You are</span> in good hands</h2>
-                        <p class="p2"><strong>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</strong></p>
-                        <p class="p5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     </div>
                     <div class="col-2">
-                        <h2 class="p6"><span class="color-1">Conseils</span> Exercice</h2>
+                        <h2 class="p6"><span class="color-1">Conseils</span> Nutrition</h2>
                         <img src="images/page4-img2.jpg" alt="" class="img-border">
-                        <p class="p2 top-6"><strong>Conseil 1</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        <p class="p2 top-6"><strong>ATTENTION A L’ALCOOL !</strong></p>
+                        <p class="p4">L’alcool n’est pas recommandé chez les sportifs. Les calories apportées par ce dernier (7kcal / g d’alcool) ne sont pas utilisables pour l’effort musculaire. L’alcool réduit les capacités physiques et va augmenter les toxines que l’organisme devra éliminer</p>
 
-                        <p class="p2 top-6"><strong>Conseil 2</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        <p class="p2 top-6"><strong>OPTIMISER LA RÉCUPÉRATION</strong></p>
+                        <p class="p4">Phase incontournable pour reconstituer les réserves et réparer les cellules, nos experts vous disent tout ce qu’il faut savoir. </p>
 
-                        <p class="p2 top-6"><strong>Conseil 3</strong></p>
-                        <p class="p4">Option congue nihil imperdiet doming id quod mazim placerat facer possim assum:</p>
+                        <p class="p2 top-6"><strong>MANGER ÉQUILIBRÉ, C’EST IMPORTANT !</strong></p>
+                        <p class="p4">L’alimentation est un facteur clé de la performance.<br/> Manger équilibré doit rester un acte simple. .<br/> Suivez nos principes faciles à respecter. </p>
                         
                     </div>
                 </div>

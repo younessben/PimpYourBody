@@ -73,7 +73,7 @@ include('bibliotheque_fonctions.php');
                                       
                                         <p><strong>Nombre de series</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_SERIES'].'</span> </p>
                                         <p><strong>Nombre de repetition</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['NBR_REPETITION'].'</span> </p>
-                                        <p><strong>Duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['DUREE_REPOS'].' secondes </span> </p> 
+                                        <p><strong>Duree de repos</strong><span style="color:red; font-weight:bold;">&nbsp;&nbsp;'.$donnee['DUREE_REPOS'].'</span> </p> 
                                   </div>
                                  
                             </div>
@@ -85,7 +85,7 @@ include('bibliotheque_fonctions.php');
                   <div class="col-2">
               
                        
-                        <h2 class="p6"><span class="color-1">Muscles</span> Concernes</h2>
+                        <h2 class="p6"><span class="color-1">Muscles</span> Concernés</h2>
                         <img src="'.$donnee['CHEMIN_IMG_DEMO'].'" alt="" class="img-border">
                         <p class="p2 top-6"><strong>Conseil 1</strong></p>
                         <p class="p4">Boire 3 à 4 gorgées d’eau toutes les 30 minutes d’exercice, à l’entraînement comme en compétition..</p>
