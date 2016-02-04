@@ -23,7 +23,7 @@
 
         $cuisse= floatval($_POST['cuisse']);
         $trtaille= floatval($_POST['trtaille']);
-        $idUtil=3;
+        $idUtil=$_SESSION['idUtilisateur'];
 
         $masseGraissse= floatval($_POST['masseGraisse']);
         
@@ -165,7 +165,7 @@
                               <tbody>
                                 <!----------------------------- Affichage des produits ------------------------------------>
                         <?php
-                            $liste=listerPerformances($connexion,3);
+                            $liste=listerPerformances($connexion,$_SESSION['idUtilisateur']);
                             if(empty($liste)==true)
                             {
                                 echo '<p>Il n\'y a aucune performance pour le moment</p>';

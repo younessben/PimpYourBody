@@ -4,7 +4,7 @@
 
 <?php
 
-    $liste=listerPerformances($connexion,3);
+    $liste=listerPerformances($connexion,$_SESSION['idUtilisateur']);
     if(empty($liste)==true)
     {
         echo '<p>Il n\'y a aucune performance pour le moment</p>';

@@ -5,9 +5,11 @@
 
 
 if (Auth::islog()){
-                echo $_GET['idProduit'].','.$_GET['qteProduit'].','.$_GET['prixUnitaire'].',';
-                ajouterPanier($connexion,3,$_GET['idProduit'],$_GET['qteProduit'],$_GET['prixUnitaire']);
-                header('Location:'.$_GET['page']);
+               // echo $_GET['idProduit'].','.$_GET['qteProduit'].','.$_GET['prixUnitaire'].',';
+                ajouterPanier($connexion,$_SESSION['idUtilisateur'],$_GET['idProduit'],$_GET['qteProduit'],$_GET['prixUnitaire']);
+    
+    //echo $_GET['page'];
+                header('Location:'.$_GET['page'].'?idProduit='.$_GET['idProduit']);
 }
 else{
         header('Location:connexion.php');

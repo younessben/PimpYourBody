@@ -62,7 +62,7 @@
                         
                          <!----------------------------- Affichage des produits ------------------------------------>
                         <?php
-                            $liste=listerPanier($connexion,3);
+                            $liste=listerPanier($connexion,$_SESSION['idUtilisateur']);
                             if(empty($liste)==true)
                             {
                                 echo '<p>Il n\'y a aucun produit pour le moment</p>';

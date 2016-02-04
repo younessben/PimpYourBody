@@ -79,7 +79,7 @@ include('bibliotheque_fonctions.php');
                               <tbody>
                         <!----------------------------- Affichage des commandes en cours ------------------------------------>
                                 <?php
-                                    $liste=listerCommandeEnCours($connexion,3,'En cours');
+                                    $liste=listerCommande($connexion,$_SESSION['idUtilisateur'],'En cours');
                                     if(empty($liste)==true)
                                     {
                                         echo '<p>Il n\'y a aucune commande pour le moment</p>';
@@ -89,7 +89,7 @@ include('bibliotheque_fonctions.php');
                                         foreach ($liste as $cmdEnCours) 
                                         {
 
-                                            afficheCommandeEncours($connexion,$cmdEnCours);
+                                            afficheCommande($connexion,$cmdEnCours,'En cours');
                                         }
                                     }
 
@@ -134,7 +134,7 @@ include('bibliotheque_fonctions.php');
                               <tbody>
                                  <!----------------------------- Affichage des commandes livré ------------------------------------>
                                 <?php
-                                    $liste=listerCommandeEnCours($connexion,3,'Livré');
+                                    $liste=listerCommande($connexion,$_SESSION['idUtilisateur'],'Livré');
                                     if(empty($liste)==true)
                                     {
                                         echo '<p>Il n\'y a aucune commande pour le moment</p>';
@@ -144,7 +144,7 @@ include('bibliotheque_fonctions.php');
                                         foreach ($liste as $cmdLivre) 
                                         {
 
-                                            afficheCommandeEncours($connexion,$cmdLivre);
+                                            afficheCommande($connexion,$cmdLivre,'Livré');
                                         }
                                     }
 

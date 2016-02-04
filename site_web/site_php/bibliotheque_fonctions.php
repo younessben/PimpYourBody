@@ -133,6 +133,7 @@ function afficheDetailsProduit($cnn,$produit)
     STOCK               -> 5
     LIEN_EXERCICE       -> 6
     */
+    $page="produit.php";
     echo
         '
             <div class="col-1">
@@ -155,21 +156,17 @@ function afficheDetailsProduit($cnn,$produit)
                             <p style="color:red; font-weight:bold;">'.$produit[3].'€</p>
 
                           </div>
-                          <div class="form-group">
-                            <label for="qteTxt">Quantité</label>
-                            <input type="text" class="form-control" id="qteTxt" placeholder="1">
-                          </div>
-                          <div class="form-group">
-                            <p><strong>Prix total</strong></p>
-                            <p style="color:red; font-weight:bold;">'.$produit[3].'€</p>
-
-                          </div>
+                          
+                          
                         </form>
 
 
 
+                        <a href="ajout_panier.php?idProduit='.$produit[0].'&prixUnitaire='.$produit[3].'&qteProduit=1&page='.$page.'">
 
-                        <a href="#" class="button top-6">Ajouter au panier</a>
+                        <button type="button" class="btn btn-primary" >Ajouter au panier</button>
+                        </a>
+                        
                     </div>
 
 
@@ -837,7 +834,7 @@ function validerCommande($cnn, $idCommande)
 
 
 
-function listerCommandeEnCours($cnn, $idUtilisateur,$statut)
+function listerCommande($cnn, $idUtilisateur,$statut)
 {
      $req="     SELECT * 
                 FROM `commande` 
@@ -865,16 +862,24 @@ function listerCommandeEnCours($cnn, $idUtilisateur,$statut)
     
     
 }
-function afficheCommandeEncours($cnn,$cmdEnCours)
+function afficheCommande($cnn,$cmd,$statut)
 {
     echo'
         <tr>
                                   
-            <td>'.$cmdEnCours[2].'</td>
-            <td>'.$cmdEnCours[3].'</td>
-            <td>'.$cmdEnCours[4].'</td>
-            <th scope="row"><a href="#">Suivre ma commande</a></th>
+            <td>'.$cmd[2].'</td>
+            <td>'.$cmd[3].'</td>
+            <td>'.$cmd[4].'</td>
+            
+            
+            ';
+    if($statut=='En cours')
+            echo'<th scope="row"><a href="#">Suivre ma commande</a></th>';
+    else
+        echo'<th scope="row"><a href="#">Détails commande</a></th>';
 
+    
+        echo'
         </tr>';
 }
 

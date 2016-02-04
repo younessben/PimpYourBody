@@ -136,3 +136,9 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 .col-4cnnx {
     float:left; width:400px
 }
+
+.error {
+    color:red;
+    font-weight: bold;
+    font-size: 12px;
+}

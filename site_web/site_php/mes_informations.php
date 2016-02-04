@@ -45,7 +45,7 @@ if (Auth::islog()){
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body onload="init('liNutrition')">
+<body>
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->
