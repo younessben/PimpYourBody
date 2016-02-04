@@ -24,8 +24,12 @@
                 
                 
                 <?php
-                
-                    $nbPanier=countPanier($connexion, $_SESSION['idUtilisateur']);
+                    $nbPanier=0;
+                    if(isset($_SESSION['idUtilisateur']))
+                    {
+                        $nbPanier=countPanier($connexion, $_SESSION['idUtilisateur']);
+                    }
+                    
                     echo'<a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">'.$nbPanier.'</span></a>';
                 ?>
                 
