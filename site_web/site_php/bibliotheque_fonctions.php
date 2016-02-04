@@ -557,6 +557,21 @@ function recupDerniereCommande($cnn)
 
 }
 
+
+//réupère l'id du dernier utilisateur crée
+function recupDernierIdUser($cnn)
+{
+    $req="  SELECT max(ID_UTILISATEUR) FROM utilisateur 
+            ;";
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
+
+
+}
+
 //Vérifie si le panier est vide où s'il existe déjà une commande en cours
 function countPanier($cnn, $idUtilisateur)
 {

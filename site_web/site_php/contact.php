@@ -1,14 +1,35 @@
 <?php
     session_start();
+    require_once 'connexion_bdd.php';
     require('authentification.php');
-include('bibliotheque_fonctions.php');
+    include('bibliotheque_fonctions.php');
+?>
+
+<?php
+    
+    if(!empty($_POST))
+    {
+                $email = $_POST['email'];
+                $texte = $_POST['corps_message'];
+                var_dump($email);
+                //Envoi d'un email
+				$to = "pimpyourbody@localhost.com";
+				$sujet = 'Remarque';
+				$body = 'Message'.$texte.'Finmessage';
+				$entete = "MIME-Version: 1.0\r\n";
+				$entete.="Content-type: text/html; charset=UTF-8\r\n";
+				$entete.='From' .$email. "\r\n";
+                'Reply-To: Pandax_webmaster@localhost.com' . "\r\n";
+				'X-Mailer: PHP/' . phpversion();
+				mail($to,$sujet,$body,$entete);
+                
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Contacts</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
-
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
@@ -53,7 +74,7 @@ include('bibliotheque_fonctions.php');
                     	<h2><span class="color-1">Nos</span> coordonnées</h2>
                         <div class="map img-border">
                           
-                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"></iframe>
+                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"><div><small></iframe>
 
 
                         </div>
@@ -70,17 +91,9 @@ include('bibliotheque_fonctions.php');
                     	<h2><span class="color-1">Formulaire</span> de contact</h2>
                         <form id="form" method="post" >
                             <fieldset>
-                              <label><input type="text" value="Name" onBlur="if(this.value=='') this.value='Name'" onFocus="if(this.value =='Name' ) this.value=''"></label>
-                              <label><input type="text" value="Email" onBlur="if(this.value=='') this.value='Email'" onFocus="if(this.value =='Email' ) this.value=''"></label>
-                              <select width="100%">
-                                    <option value="1">azertyuiopqsdfghjklmwxcvbn,</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                  </select>
-                                  
-                              
-                              <label><textarea onBlur="if(this.value==''){this.value='Message'}" onFocus="if(this.value=='Message'){this.value=''}">Message</textarea></label>
+                              <label><input type="text" id="nom" name="nom" value="Name" onBlur="if(this.value=='') this.value='Name'" onFocus="if(this.value =='Name' ) this.value=''"></label>
+                              <label><input type="email" id="email" name="email" value="Email" onBlur="if(this.value=='') this.value='Email'" onFocus="if(this.value =='Email' ) this.value=''"></label>
+                              <label><textarea id="corps_message" name="corps_message" onBlur="if(this.value==''){this.value='Message'}" onFocus="if(this.value=='Message'){this.value=''}">Message</textarea></label>
                               <div class="btns"><a href="#" class="button" onClick="document.getElementById('form').submit()">Envoyer</a></div>
                             </fieldset>  
                           </form> 

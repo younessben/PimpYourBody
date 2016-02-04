@@ -87,7 +87,7 @@
                         <a href="nutrition.php">Savoir plus</a>
                     </div>
                 </li>
-                <li><img src="images/muscu.jpg" alt="">
+                <li><img src="images/Gros-muscles.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Plus<span>de muscles</span></p>
                         <p class="font-2">Être mince ou avoir des gros muscles est en partie une question d’entraînement, et en partie une question d’équilibre nutritionnel.</p>
