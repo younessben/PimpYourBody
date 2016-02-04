@@ -4,7 +4,7 @@
     include('bibliotheque_fonctions.php');
 
 
-supprimerPanier($connexion,3,$_GET['idProduit'],$_GET['idCommande']);
+supprimerPanier($connexion,$_SESSION['idUtilisateur'],$_GET['idProduit'],$_GET['idCommande']);
 header('Location:panier.php');
 
 

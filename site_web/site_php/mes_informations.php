@@ -45,7 +45,7 @@ if (Auth::islog()){
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body onload="init('liNutrition')">
+<body>
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->
@@ -104,14 +104,28 @@ if (Auth::islog()){
         
                          }
                 
-                        $req2=$connexion->prepare("SELECT nom FROM utilisateur WHERE email = :email");
-                        $req2->execute(array('email' => $_SESSION['Auth']['email']));
-                        echo '<b>';
-                        while ($donnees = $req2->fetch())
+                       $q6=array('iduser'=>$_SESSION['idUtilisateur']);
+                          $req4='SELECT * FROM adresse WHERE id_utilisateur=:iduser';
+                          $reponse= $connexion->prepare($req4);
+                          $reponse->execute($q6);
+   
+    
+                            $liste2 =array();
+                                if($reponse->execute())
                             {
-                                echo $donnees['nom'] .'  <br />';
+                            while ($data = $reponse->fetch())
+                            {
+                                array_push($liste, $tab=array($data['NUMERO_RUE'],$data['NOM_RUE'],$data['VILLE'],$data['CODE_POSTAL']));
+                                
+                                foreach  ($tab as $value ){
+                                    echo '<b>'. $value;
+                                    echo '<br />';
+                                }
+                                
                             }
-				}?>
+                         }
+                     }
+				?>
                         
                         <div class="wrap box-1">
                             <img src="images/page4-img1.jpg" alt="" class="img-border img-indent">

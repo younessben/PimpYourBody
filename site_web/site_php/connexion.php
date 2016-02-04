@@ -121,7 +121,9 @@ if (Auth::islog()){
                     <div class="col-4inscr">
                     	<h2><span class="color-1">Nouveau </span> client?</h2>
                         
-                              <div class="inscript"><a href="inscription.php" class="button" onClick="document.getElementById('form').submit()">S'inscrire</a></div>
+                            <div class="inscript">
+                                  <a href="inscription.php" class="button" onClick="document.getElementById('form').submit()">S'inscrire</a>
+                            </div>
                     </div>
                     
                     

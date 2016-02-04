@@ -6,35 +6,25 @@ include('bibliotheque_fonctions.php');
 
 
 <?php
-    if(!empty($_POST) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-        {
-            $email = addslashes($_POST['email']);
-            //$sql = 'SELECT token FROM utilisateurs WHERE email="' . $email . '"'; //On récupère le token dans la BDD correspondant à l'email pour l'utiliser dans le lien pour la réinitialisation du password
-            $token = $connexion -> prepare ($sql);
-            $token->execute();
-            var_dump ($token);
-            $stock=$token->fetch(PDO::FETCH_NUM);
-    
-			//Envoi d'un email pour la réinitialisation du mot de passe
-			$to = $email;
-			$sujet = 'Reinitilisation mot de passe';
-			$body = 'Merci de cliquer ici pour la reinitialisation du mot de passe -> 
-					<a href="http://localhost/pimpyourbody/site_web/site_php/chgt_password.php?email='.$to.'">Réinitialisation mot de passe</a>';
-			$entete = "MIME-Version: 1.0\r\n";
-			$entete.="Content-type: text/html; charset=UTF-8\r\n";
-			$entete.='From: PIMPYOURBODY ::' . "\r\n";
-			'Reply-To: pimpyourbody@localhost.com' . "\r\n";
-			'X-Mailer: PHP/' . phpversion();
-			mail($to,$sujet,$body,$entete);
-
-    header('location:mes_informations.php'); // Redirige sur la page de login après l'envoi de l'email
-	}else
-		{
-            if(!empty($_POST) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-            {
-            $error_email = ' Votre email n\'est pas valide';
-            }
-		}
+            $email = $_GET['email'];
+       
+            if(!empty ($_POST['new_password']))
+                {
+                    if($_POST['new_password']=$_POST['confirm_password'])
+                    {
+                        $new_password = sha1($_POST['new_password']);//On crypte le mot de passe pour ne pas l'avoir en clair dans la BDD
+                        //Mis à jour Password
+                        $q = array('new_password'=>$new_password,'email'=>$email);
+                        $sql = 'UPDATE utilisateur SET mot_de_passe = :new_password WHERE email=:email' ;
+                        $req = $connexion -> prepare ($sql);
+                        $req->execute($q);
+                        var_dump($q);
+                        header('Location:connexion.php');
+                    }elseif($_POST['new_password']!=$_POST['confirm_password'])
+                        {
+                            $error_password="Il faut correctement rentrer le mot de passe dans les 2 champs"; 
+                        }
+                }
 
 
 ?>
@@ -88,13 +78,29 @@ include('bibliotheque_fonctions.php');
                     	<h2><span class="color-1">Reinitialisation</span> du mot de passe</h2>
                         <form id="form" method="post" >
                             <fieldset>
-                              <label><input type="text" name="email" id="email" placeholder="Email"></label>
-                                <div class="error">
-								    <?php if (isset($error_email))
-								        {
-								            echo $error_email;
-								        }?>
-				                </div>  
+                              <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="password" >Nouveau mot de passe:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="password" class="form-control" id="password" name="new_password" placeholder="Mot de passe">
+                                        </div>
+                                        <div class="error">
+                                            <?php if (isset($error_password)){echo $error_password;} ?>
+								        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="password" >Confirmer mot de passe:</label>
+                                        </div>
+                                        <div class="col-ld-3">
+                                            <input type="password" class="form-control" id="password" name="confirm_password" placeholder="Répéter mot de passe">
+                                        </div>
+                                        <div class="error">
+                                            <?php if (isset($error_confirmpass)){echo $error_confirmpass;} ?>
+								        </div>
+                                    </div>
                              <a class="button" href="#" onClick="document.getElementById('form').submit()"> Reinitialisation</a>  
                             </fieldset>  
                           </form> 

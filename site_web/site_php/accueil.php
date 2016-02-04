@@ -62,7 +62,7 @@
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body oninit="init('liAccueil');" onload="init('liAccueil');">
+<body>
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->
@@ -87,7 +87,7 @@
                         <a href="nutrition.php">Savoir plus</a>
                     </div>
                 </li>
-                <li><img src="images/muscu.jpg" alt="">
+                <li><img src="images/Gros-muscles.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Plus<span>de muscles</span></p>
                         <p class="font-2">Être mince ou avoir des gros muscles est en partie une question d’entraînement, et en partie une question d’équilibre nutritionnel.</p>
@@ -113,30 +113,29 @@
           	<div class="box-shadow">
             	<div class="wrap block-2">
                     <div class="col-1">
-                    	<h2 class="p3"><span class="color-1">Latest</span> events</h2>
+                    	<h2 class="p3"><span class="color-1">Prochains</span> évenements</h2>
                         <div class="wrap box-1">
-                            <img src="images/test.jpg" alt="" class="img-border img-indent">
+                            <img src="images/evt2.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                <p class="p2"><strong>Ut wisi enim ad minim veniamis nostrud</strong> </p>
-                                <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim.</p>
+                                <p class="p2"><strong>Le show Live Fit</strong> </p>
+                                <p>Les Livefit sont des shows fitness exceptionnels qui fédèrent des milliers de participants, et ce dans le monde entier depuis 2013. Barcelone, Melbourne, Shanghai, Amsterdam, Berlin, Chicago, Dubai, Londres ou encore Toronto sont autant de destinations auxquelles vous pouvez vous rendre afin de prendre part à cet évènement sportif unique en son genre.</p>
                             </div>
                         </div>
                         <div class="wrap box-1 top-2">
-                            <img src="images/page1-img2.jpg" alt="" class="img-border img-indent">
+                            <img src="images/evt_paris.jpg" alt="" class="img-border img-indent">
                             <div class="extra-wrap">
-                                <p><strong>Duis autem vel eum iriure dolor</strong></p>
-                                <p>Hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilis lorem ipsum dolor.</p>
+                                <p><strong>Body Fitness</strong></p>
+                                <p>Rendez-vous à la Porte de Versailles pour un week-end musclé ! Le salon Mondial Body Fitness Form’expo existe depuis plus de 20 ans et confirme au fil des années, sa place de leader dans le secteur de la remise en forme en France. C’est un véritable lieu d’échange et de conseils pratiques pour un parcours de remise en forme personnalisé ! 
+                                <br/>En savoir plus sur <a href="http://www.evous.fr">http://www.evous.fr</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-2">
-                        <h2 class="p3"><span class="color-1">Services</span> list</h2>
+                        <h2 class="p3"><span class="color-1">Nos</span> services</h2>
                         <ul class="list-1">
-                        	<li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                            <li><a href="#">Consetetur sadipscing elitr sed</a></li>
-                            <li><a href="#">Diam nonumy eirmod tempor</a></li>
-                            <li><a href="#">Invidunt ut labore dolore</a></li>
-                            <li><a href="#">Magna aliquyam erat sed</a></li>
+                        	<li>Programmes sur mesure</li>
+                            <li>Boutique en ligne</li>
+                            <li>Suivi de vos progrès</li>
                         </ul>
                        
                     </div>
