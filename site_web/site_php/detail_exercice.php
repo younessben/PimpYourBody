@@ -2,6 +2,7 @@
 <?php
     session_start();
     require('authentification.php');
+include('bibliotheque_fonctions.php');
     include('bibliotheque_fonctions_youness.php');
 ?>
 <html lang="en">

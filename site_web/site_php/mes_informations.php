@@ -2,6 +2,7 @@
 session_start();
 //require('authentification.php');
 require('authentification.php');
+include('bibliotheque_fonctions.php');
 if (Auth::islog()){
 	
 }else{

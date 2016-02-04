@@ -1,14 +1,15 @@
 <?php
     session_start();
     require('authentification.php');
+include('bibliotheque_fonctions.php');
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title>Accueil</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
         
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
@@ -77,7 +78,7 @@
                         <a href="entrainement.php">Savoir plus</a>
                     </div>
                 </li>
-                <li><img src="images/slider-2.jpg" alt="">
+                <li><img src="images/ahmet.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Bien Etre</span></p>
                         <p class="font-2">Fitness, bien-être, beauté, détente... notre site  vous propose une multitude d'exercices et conseils qui s’adressent à tous le monde y compris les moins sportifs !</p>

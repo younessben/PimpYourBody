@@ -1,5 +1,4 @@
 
-
 <header>
         <h1><a href="accueil.php">Pimp<strong>Your Body</strong></a></h1>
         <nav>
@@ -22,7 +21,15 @@
                 
             </div>
             <div class="social-icons">
-                <a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">3</span></a>
+                
+                
+                <?php
+                
+                    $nbPanier=countPanier($connexion, 3);
+                    echo'<a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">'.$nbPanier.'</span></a>';
+                ?>
+                
+                
                 <a href="connexion.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
             </div>
             

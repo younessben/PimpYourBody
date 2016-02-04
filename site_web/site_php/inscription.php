@@ -1,6 +1,7 @@
 <?php
 require_once 'connexion_bdd.php';
 require('authentification.php');
+include('bibliotheque_fonctions.php');
 
 ?>
 <?php

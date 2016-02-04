@@ -2,6 +2,7 @@
 session_start();
 require_once 'connexion_bdd.php';
 require('authentification.php');
+include('bibliotheque_fonctions.php');
 if (Auth::islog()){
 	header('Location:mes_informations.php');
 }
