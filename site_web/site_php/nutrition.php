@@ -53,7 +53,7 @@ include('bibliotheque_fonctions.php');
                     	<h2 class="p3"><span class="color-1">Programme de musculation</span> tous niveaux</h2>
                         <p class="p2"><strong>Être mince ou avoir des gros muscles est en partie une question d’entraînement, et en partie une question d’équilibre nutritionnel. Cela implique le choix d’aliments riches en fibres et en eau et ne contenant que peu de graisses (les mauvaises en particulier).</strong></p>
                         <p class="p5">Nous vous proposons une sélection d’aliments ayant bon goût et qui peuvent satisfaire votre palais en apportant peu de calories. 
-                        <a href="inscription.php" style="">CLIQUEZ ICI POUR VOUS INSCRIRE</a>
+                        <a href="connexion.php" style="">CLIQUEZ ICI POUR VOUS CONNECTER</a>
                         </p>
                         
                     </div>
@@ -67,7 +67,7 @@ include('bibliotheque_fonctions.php');
                             <div class="extra-wrap">
                                 <p class="p2"><strong>PRISE DE MASSE MAXIMUM</strong></p>
                                 <p>OBJECTIF : Consommer fréquemment un maximum de calories de qualité pour favoriser l’anabolisme, gagner en poids de corps et en masse musculaire.</p>
-                                <a href="detail_nutrition.php" class="button top-6">Acceder au programme</a>
+                                <a href="connexion.php" class="button top-6">Acceder au programme</a>
                             </div>
                              <br/>
                             <br/>
@@ -76,7 +76,7 @@ include('bibliotheque_fonctions.php');
                             <div class="extra-wrap">
                                 <p class="p2"><strong>MINCEUR CUISSES-FESSES</strong></p>
                                 <p>OBJECTIF : Réduire l’apport calorique et drainer l’organisme pour perdre un maximum de masse graisseuse et de cellulite sur les cuisses et les fesses.</p>
-                                <a href="inscription.php" class="button top-6">Acceder au programme</a>
+                                <a href="connexion.php" class="button top-6">Acceder au programme</a>
                             </div>
             
                  </div>

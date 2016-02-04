@@ -98,7 +98,7 @@ function affichageNutrition($cnn,$nutrition) // affiche le titre
 {
     echo 
         '
-            <h2 class="p3"><span class="color-1">Programme de nutrition :'.$nutrition[0].'</span></h2>
+            <h2 class="p3"><span class="color-1">Programme de nutrition : '.$nutrition[0].'</span></h2>
                         <p class="p5">'.$nutrition[8].'</p>
                         <div class="wrap box-1">
             <div class="wrap box-1 top-4"> 
