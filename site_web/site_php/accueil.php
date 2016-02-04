@@ -145,10 +145,7 @@ include('bibliotheque_fonctions.php');
         </div>
     </section> 
 <!--==============================footer=================================-->
-    <footer>
-        <p>© 2012 Fitness Club</p>
-        <p>Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a></p>
-    </footer>	
+    <?php include('footer.inc.php'); ?> 
 </div>    
 <script>
 	Cufon.now();

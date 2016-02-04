@@ -769,7 +769,7 @@ function sumMntCommande($cnn,$idCommande)
     $req="  
         SELECT SUM(`MONTANT_LIGNE_CMD`)
         FROM `ligne_commande`
-        WHERE `ID_COMMANDE`=".$idCommande";";
+        WHERE `ID_COMMANDE`=".$idCommande.";";
         
     $reponse= $cnn->prepare($req);
     $reponse->execute();
@@ -780,6 +780,88 @@ function sumMntCommande($cnn,$idCommande)
     
 }
 
+function recupIdPanier($cnn,$idUtil)
+{
+    $req="  
+        SELECT `ID_COMMANDE` FROM `commande` 
+        WHERE `ID_UTILISATEUR`=".$idUtil."
+        AND `STATUT_COMMANDE` like 'Panier'";
+        
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
+    
+}
+
+function validerCommande($cnn, $idCommande)
+{
+    
+    $mntCommande= sumMntCommande($cnn,$idCommande);
+    $req="    
+    UPDATE `commande` 
+    SET `STATUT_COMMANDE`= 'En cours'
+        , MONTANT_COMMANDE=:mntCommande
+    WHERE ID_COMMANDE=:idCommande";
+    
+    
+
+    $stmt = $cnn->prepare($req);
+    $stmt->bindParam(':idCommande', $idCommande);
+    $stmt->bindParam(':mntCommande', $mntCommande);
+    $stmt->execute();
+    
+    
+}
+
+
+
+
+
+
+
+
+function listerCommandeEnCours($cnn, $idUtilisateur,$statut)
+{
+     $req="     SELECT * 
+                FROM `commande` 
+                WHERE `ID_UTILISATEUR` = ".$idUtilisateur."
+                AND `STATUT_COMMANDE` like '".$statut."'  
+            ;";
+    $reponse= $cnn->prepare($req);
+   
+    
+    $liste =array();
+    if($reponse->execute())
+    {
+         while ($donnees = $reponse->fetch())
+        {
+            array_push($liste, array($donnees['ID_COMMANDE'],$donnees['ID_UTILISATEUR'],$donnees['DATE_COMMANDE'],$donnees['MONTANT_COMMANDE'],$donnees['STATUT_COMMANDE']));
+        }
+       
+        
+    }
+   
+    return $liste;
+    
+    
+    
+    
+    
+}
+function afficheCommandeEncours($cnn,$cmdEnCours)
+{
+    echo'
+        <tr>
+                                  
+            <td>'.$cmdEnCours[2].'</td>
+            <td>'.$cmdEnCours[3].'</td>
+            <td>'.$cmdEnCours[4].'</td>
+            <th scope="row"><a href="#">Suivre ma commande</a></th>
+
+        </tr>';
+}
 
 
 
