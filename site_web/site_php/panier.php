@@ -5,20 +5,6 @@
 ?>
 
 
-<?php
-
- $nbPanier=countPanier($connexion, 3);
-
-
-
-
-
-
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

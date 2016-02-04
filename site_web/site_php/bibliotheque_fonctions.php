@@ -564,10 +564,12 @@ function countPanier($cnn, $idUtilisateur)
     
     $req="  SELECT COUNT(*) 
 
-            FROM `commande` 
+            FROM `commande` NATURAL JOIN ligne_commande
             WHERE `ID_UTILISATEUR` = ".$idUtilisateur."
             AND `STATUT_COMMANDE` like 'Panier' 
             ;";
+    
+    
     $reponse= $cnn->prepare($req);
     $reponse->execute();
     $donnees = $reponse->fetch();
@@ -675,8 +677,13 @@ function affichageCommandePanier($cnn,$commandePanier)
     
                         <div class="wrap box-1 top-4"> 
                             <h3>'.$commandePanier[6].'</h2>
-                            <img src="images/page2-img1.jpg" alt="" class="img-border img-indent">
+                            ';
+                            if($commandePanier[8] == null)
+                                echo '<img src="images/img_vide.jpg" alt="" class="img-border img-indent">';
+                            else
+                                echo'<img src="'.$commandePanier[8].'" alt="" class="img-border img-indent">';
                             
+        echo'
                             <div class="extra-wrap">
                                 
                                 <label for="qteTxt">Quantité</label>
@@ -684,7 +691,7 @@ function affichageCommandePanier($cnn,$commandePanier)
                                 
                                 <p><strong>Prix total</strong></p>
                                 <p style="color:red; font-weight:bold;">'.$commandePanier[4].'€</p>
-                                <a href="traitementSuppressionPanier.php?idCommande='.$commandePanier[1].'&idProduit='.$commandePanier[0].'">
+                                <a href="supprime_panier.php?idCommande='.$commandePanier[1].'&idProduit='.$commandePanier[0].'">
                                     <button type="button" class="btn btn-danger">Retirer le produit</button>
                                 </a>
                             </div>
@@ -693,6 +700,54 @@ function affichageCommandePanier($cnn,$commandePanier)
         ';
 
 
+}
+
+function supprimerPanier($cnn,$idUtilisateur,$idProduit,$idCommande)
+{
+        
+    
+        $nbElementPanier=countPanier($cnn,$idUtilisateur);
+        
+    
+        $req="DELETE FROM `ligne_commande` 
+                    WHERE ID_PRODUIT =:idProduit
+                    AND  ID_COMMANDE=:idCommande; "; 
+        if($nbElementPanier==1)
+        {
+
+                $req=$req."
+                    
+                    
+                    DELETE FROM commande
+                    WHERE ID_COMMANDE=:idCommande;
+
+            ";
+            
+            
+        }
+            
+
+
+
+
+            $stmt = $cnn->prepare($req);
+
+            $stmt->bindParam(':idProduit', $idProduit);
+            $stmt->bindParam(':idCommande', $idCommande);
+           
+            
+            
+            
+
+            $stmt->execute();
+    
+        
+    
+    
+       
+    
+    
+       
 }
 
 
