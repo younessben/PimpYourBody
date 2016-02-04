@@ -22,8 +22,13 @@ MUSCLE_CONCERNE     -> 7
 // Apres avoir lister tous les produits, les ajoute dans un tableau puis renvoie le tableau
 function listerExercices($cnn,$id,$IdProg)
 {
-        $req="  SELECT * FROM `programme_entrainement` natural join `exercice`
-                     WHERE ID_PROG_ENTR = ".$IdProg.";";
+        $req="  SELECT * FROM `programme_entrainement` pe
+                 inner join `details_exercice` de
+                 on de.`ID_PROG_ENTR`= pe.`ID_PROG_ENTR`
+                 inner join exercice ex
+                  on de.`ID_EXERCICE`= ex.`ID_EXERCICE`
+                     WHERE pe.ID_PROG_ENTR = ".$IdProg.";";
+
     $reponse= $cnn->prepare($req);
    
     
@@ -185,7 +190,8 @@ function affichageProgrammes($cnn,$programme) // affiche le titre
                                 <div class="extra-wrap">
                                     <p class="p2"><strong>'.$programme[1].'</strong></p>
                                     <p>'.$programme[2].'</p>
-                                    <a href="mes_performances.php" class="button top-6">Suivre le programme</a>
+                                     <a href="traitement_choix_prog.php?idProgramme='.$programme[0].'" class="button top-6">Suivre le programme</a>
+                                     
                                 </div>
                             </div>
                             <br/>
@@ -239,4 +245,71 @@ function affichageConseils($cnn,$conseils) // affiche le titre
                         
                     </div>
     ';
+}
+
+
+function choixProgramme($cnn,$idProg)
+{
+     if($idProg == 1)
+     {
+            $req="    
+               UPDATE utilisateur
+               SET  ID_PROG_ENTR = :idProg
+	               ,ID_PROG_NUTR = '1'
+                WHERE ID_UTILISATEUR = :idUtilisateur;";
+     }
+     else {
+             if($idProg == 2)
+             {
+            $req="    
+               UPDATE utilisateur
+               SET  ID_PROG_ENTR = :idProg
+	               ,ID_PROG_NUTR = '2'
+                WHERE ID_UTILISATEUR = :idUtilisateur;";
+             }
+             else
+             {
+                  if($idProg == 3)
+                  {
+                  $req="    
+                   UPDATE utilisateur
+                   SET  ID_PROG_ENTR = :idProg
+                       ,ID_PROG_NUTR = '3'
+                    WHERE ID_UTILISATEUR = :idUtilisateur;";
+                    }
+                    else
+                    {
+                            $req="    
+                               UPDATE utilisateur
+                               SET  ID_PROG_ENTR = :idProg
+                                   ,ID_PROG_NUTR = '4'
+                                WHERE ID_UTILISATEUR = :idUtilisateur;";
+                    }
+             }  
+     }
+    $stmt = $cnn->prepare($req);
+    $stmt->bindParam(':idProg', $idProg);
+    $stmt->bindParam(':idUtilisateur', $_SESSION['idUtilisateur']);
+
+    $stmt->execute();
+}
+
+
+function recupIdProgEn($cnn,$idUtil)
+{
+    
+    
+
+    $req="  
+        SELECT ID_PROG_ENTR
+        FROM `utilisateur`
+        WHERE `ID_UTILISATEUR`=".$idUtil.";";
+        
+    $reponse= $cnn->prepare($req);
+    $reponse->execute();
+    $donnees = $reponse->fetch();
+    
+    return $donnees[0]; 
+    
+    
 }

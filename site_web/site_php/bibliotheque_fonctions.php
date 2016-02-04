@@ -769,7 +769,7 @@ function sumMntCommande($cnn,$idCommande)
     $req="  
         SELECT SUM(`MONTANT_LIGNE_CMD`)
         FROM `ligne_commande`
-        WHERE `ID_COMMANDE`=".$idCommande";";
+        WHERE `ID_COMMANDE`=".$idCommande.";";
         
     $reponse= $cnn->prepare($req);
     $reponse->execute();

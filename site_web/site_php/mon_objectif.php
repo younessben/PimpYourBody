@@ -65,46 +65,6 @@ include('bibliotheque_fonctions.php');
                     
                     <div id="divTitle">
                       <h2 class="p3"><span class="color-1">Mon</span> objectif</h2>
-                        <!-- 
-                            <div id="divContent">
-                            <div class="wrap box-1">
-                                <img src="images/prise_de_masse.png" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="p2"><strong>Prise de masse</strong></p>
-                                    <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
-                                    <a href="inscription.php" class="button top-6">Suivre le programme</a>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="wrap box-1">
-                                <img src="images/prise_de_masse.png" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="p2"><strong>Sèche</strong></p>
-                                    <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
-                                    <a href="inscription.php" class="button top-6">Suivre le programme</a>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="wrap box-1">
-                                <img src="images/prise_de_masse.png" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="p2"><strong>Minceur</strong></p>
-                                    <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
-                                    <a href="inscription.php" class="button top-6">Suivre le programme</a>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="wrap box-1">
-                                <img src="images/prise_de_masse.png" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="p2"><strong>Cardio-Energie</strong></p>
-                                    <p>Obtenir des abdominaux en tablette de chocolat a toujours été une priorité pour la majorité des  pratiquants de musculation. </p>
-                                    <a href="inscription.php" class="button top-6">Suivre le programme</a>
-                                </div>
-                            </div>
-                            
-                        </div> 
-                        -->
                         
                           <!----------------------------- Affichage des programmes ------------------------------------>
                                 <?php

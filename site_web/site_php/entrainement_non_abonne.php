@@ -53,7 +53,7 @@ include('bibliotheque_fonctions.php');
                     	<h2 class="p3"><span class="color-1">Programmes de musculation</span> tous niveaux</h2>
                         <p class="p2"><strong>Quand on fait de la musculation, il est important de mettre en place un programme correspondant à votre objectif. Celui-ci peut être de gagner du muscle ou du poids, vous débarrasser de kilos en trop, préparer une saison sportive ou simplement retrouver et maintenir sa forme. </strong></p>
                         <p class="p5">Vous trouverez ici différents programmes de musculation, pour la prise de masse, de force ou la perte de poids. Que vous soyez débutants ou expérimenté, nos programmes et conseils vous aideront à progresser au mieux. Il n'y a plus qu'à vous laisser guider.
-                        <a href="inscription.php" style="">CLIQUEZ ICI POUR VOUS CONNECTER</a>
+                        <a href="connexion.php" style="">CLIQUEZ ICI POUR VOUS CONNECTER</a>
                          </p>
                         <div class="wrap box-1">
                             <img src="images/abdos2.jpg" alt="" class="img-border img-indent">

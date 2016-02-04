@@ -51,12 +51,15 @@ include('bibliotheque_fonctions.php');
             	<div class="wrap block-2">
                    
                     <div class="col-4">
-                    	<h2 class="p3"><span class="color-1">Programmes de musculation</span> TITRE du PROGRAMME CHOISI</h2>
+                    	<h2 class="p3"><span class="color-1">Votre programmes de musculation</span></h2>
                          </p>
                         <div class="wrap box-1">
                              <!----------------------------- Affichage des exercices ------------------------------------>
-                                <?php                            
-                                    $liste=listerExercices($connexion,1,1);
+                                <?php
+                            
+                                if(!empty($_GET))
+                                {
+                                    $liste=listerExercices($connexion,$_SESSION['idUtilisateur'],$_GET['idProgramme']);
                                     if(empty($liste)==true)
                                     {
                                         echo '<p>Il n\'y a aucun exercice pour le moment</p>';
@@ -69,7 +72,26 @@ include('bibliotheque_fonctions.php');
                                             affichageExercices($connexion,$exercice);
                                         }
                                     }
+                                }
+                            else
+                            {
+                                $idEntr=recupIdProgEn($connexion,$_SESSION['idUtilisateur']);
+                                
+                                $liste=listerExercices($connexion,$_SESSION['idUtilisateur'],$idEntr);
+                                if(empty($liste)==true)
+                                {
+                                    echo '<p>Il n\'y a aucun exercice pour le moment</p>';
+                                }
+                                else
+                                {
+                                    foreach ($liste as $exercice) 
+                                    {
 
+                                        affichageExercices($connexion,$exercice);
+                                    }
+                                }
+                            }
+                                    
                             ?>
                     </div>
                 </div>
