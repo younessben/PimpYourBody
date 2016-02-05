@@ -52,11 +52,11 @@ include('bibliotheque_fonctions.php');
                    
                     <div class="col-4">
                     	<h2 class="p3"><span class="color-1">Votre programmes de musculation</span></h2>
-                         </p>
+                      
                         <div class="wrap box-1">
                              <!----------------------------- Affichage des exercices ------------------------------------>
                                 <?php
-                            
+                                
                                 if(!empty($_GET))
                                 {
                                     $liste=listerExercices($connexion,$_SESSION['idUtilisateur'],$_GET['idProgramme']);
@@ -98,6 +98,7 @@ include('bibliotheque_fonctions.php');
             </div>
           </div>
           <div class="clear"></div>
+        </div>
         </div>
     </section> 
 <!--==============================footer=================================-->

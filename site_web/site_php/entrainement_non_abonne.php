@@ -6,7 +6,7 @@ include('bibliotheque_fonctions.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Trainings</title>
+    <title>Entrainement</title>
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">

@@ -73,25 +73,25 @@
           <div class="grid_12">
             <div class="slider">
               <ul class="items">
-                 <li><img src="images/hercules.png" alt="">
+                 <li><img src="images/equipe.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Entrainez<span>Vous</span></p>
                         <p class="font-2">Découvrez nos exercices de musculation, classés par zones musculaires et expliqués par le coach. Tous les exercices sont accompagnés d'une vidéo....</p>
-                        <a href="entrainement.php">Savoir plus</a>
+                        <a href="connexion.php">Savoir plus</a>
                     </div>
                 </li>
                 <li><img src="images/BG.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Bien Etre</p>
                         <p class="font-2">Fitness, bien-être, beauté, détente... notre site  vous propose une multitude d'exercices et conseils qui s’adressent à tous le monde y compris les moins sportifs !</p>
-                        <a href="nutrition.php">Savoir plus</a>
+                        <a href="connexion.php">Savoir plus</a>
                     </div>
                 </li>
                 <li><img src="images/Gros-muscles.jpg" alt="">
                     <div class="banner">
                         <p class="font-1">Plus<span>de muscles</span></p>
                         <p class="font-2">Être mince ou avoir des gros muscles est en partie une question d’entraînement, et en partie une question d’équilibre nutritionnel.</p>
-                        <a href="entrainement.php">Savoir plus</a>
+                        <a href="connexion.php">Savoir plus</a>
                     </div>
                 </li>
               </ul>

@@ -74,7 +74,7 @@
                     	<h2><span class="color-1">Nos</span> coordonnées</h2>
                         <div class="map img-border">
                           
-                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"><div><small></iframe>
+                          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="700" height="440" src="https://maps.google.com/maps?hl=fr&q=12 Rue Thierry Mieg, Rue Edouard Branly, 90000 Belfort&ie=UTF8&t=m&z=10&iwloc=B&output=embed"></iframe>
 
 
                         </div>
@@ -84,9 +84,10 @@
                             <dt class="color-1"><strong>12 Rue Thierry Mieg, Rue Edouard Branly,<br>90000 Belfort</strong></dt>
                             <dd><span>Telephone:</span>03 00 00 00 00</dd>
                             <dd><span>Fax:</span>03 00 00 00 01</dd>
-                            <dd><span>E-mail:</span><a href="#" class="link">mail@utbm.fr</a></dd>
+                            <dd><span>E-mail:</span><a href="#" class="link">contact@pimpyourbody.fr</a></dd>
                         </dl>
                     </div>
+                        
                     <div class="col-4">
                     	<h2><span class="color-1">Formulaire</span> de contact</h2>
                         <form id="form" method="post" >

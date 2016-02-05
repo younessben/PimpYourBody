@@ -128,12 +128,12 @@ if (Auth::islog()){
 				?>
                         
                         <div class="wrap box-1">
-                            <img src="images/page4-img1.jpg" alt="" class="img-border img-indent">
+                            
                             <div class="extra-wrap">
                                 <a href="modification_membre.php">Modification de vos informations</a>
 		<br><br>
 	
-                                <a href="#" class="button top-6">Search</a>
+                              
                             </div>
                         </div>
                     </div>
@@ -144,9 +144,7 @@ if (Auth::islog()){
         </div>
     </section> 
 <!--==============================footer=================================-->
-    <footer>
         <?php include('footer.inc.php'); ?> 
-    </footer>	
 </div>    
 <script>
 	Cufon.now();

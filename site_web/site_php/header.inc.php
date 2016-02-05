@@ -10,19 +10,9 @@
                         <a href="deconnexion.php"><span class="glyphicon glyphicon-off"></span>Déconnexion</a>
                         ';
                     }
-                
                 ?>
-                
-                
-                
-                
-                
-            	
-                
             </div>
             <div class="social-icons">
-                
-                
                 <?php
                     $nbPanier=0;
                     if(isset($_SESSION['idUtilisateur']))
@@ -36,15 +26,8 @@
                 
                 <a href="connexion.php"><span class="glyphicon glyphicon-user"></span>Mon compte</a>
             </div>
-            
-           
-            
             <ul class="menu">
-                
-                
                 <?php   
-                   
-                    
                     if (Auth::islog()){
                         echo
                         '
@@ -64,10 +47,6 @@
                     }
                 
                 ?>
-                
-                
-                
-                
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boutique <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -77,36 +56,18 @@
                   </ul>
                 </li>
                 <?php   
-                   
-                    
                     if (Auth::islog()){
                         echo
                         '
                         <li id="liEntrainement"><a href="entrainement.php">Entrainement</a></li>
+                        <li id="liNutrition"><a href="detail_nutrition.php">Nutrition</a></li>
                         ';
                     }else{
-                        echo '<li id="liEntrainement"><a href="entrainement_non_abonne.php">Entrainement</a></li>';
-                    }
-                
-                ?>
-               
-                
-                
-                <?php   
-                   
-                    
-                    if (Auth::islog()){
-                        echo
-                        '
-                            <li id="liNutrition"><a href="detail_nutrition.php">Nutrition</a></li>
-                        
+                        echo '<li id="liEntrainement"><a href="entrainement_non_abonne.php">Entrainement</a></li>
+                                <li id="liNutrition"><a href="nutrition.php">Nutrition</a></li>
                         ';
-                    }else{
-                        echo '<li id="liNutrition"><a href="nutrition.php">Nutrition</a></li>';
                     }
-                
                 ?>
-                
                 <li id="liContact"><a href="contact.php">Contact</a></li>
             </ul>
         </nav>

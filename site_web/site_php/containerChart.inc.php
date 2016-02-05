@@ -9,27 +9,7 @@
     {
         echo '<p>Il n\'y a aucune performance pour le moment</p>';
     }
-    else
-    {
-        
-    }
 
-    
-    /*
-    
-        0 -> ID_PERFORMANCE
-        1 -> ID_UTILISATEUR
-        2 -> POIDS
-        3 -> TAILLE
-        4 -> BRAS
-        5 -> EPAULES
-        6 -> POITRINES
-        7 -> CUISSES
-        8 -> TOUR_TAILLE
-        9 -> DATE_SAISIE
-        10 -> MASSE_GRAISSEUSE
-    
-    */
 
     echo "
                 <script type=\"text/javascript\">

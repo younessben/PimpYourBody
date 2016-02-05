@@ -47,7 +47,7 @@ include('bibliotheque_fonctions.php');
 				$to = $email;
 				$sujet = 'Activation de votre compte';
 				$body = 'Merci de cliquer ici pour l activation -> 
-						<a href="http://localhost/Pimpyourbody/site_web/site_php/activation_inscription.php?email='.$to.'">Activation du compte</a>';
+						<a href="http://127.0.0.1:81/Pimpyourbody/site_web/site_php/activation_inscription.php?email='.$to.'">Activation du compte</a>';
 				$entete = "MIME-Version: 1.0\r\n";
 				$entete.="Content-type: text/html; charset=UTF-8\r\n";
 				$entete.='From: PIMPYOURBODY ::' . "\r\n";

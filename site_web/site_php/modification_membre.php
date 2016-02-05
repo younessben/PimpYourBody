@@ -13,6 +13,8 @@ if (Auth::islog()){
 <?php
     if(!empty($_POST))
 		{
+               
+                
                 $new_email = addslashes($_POST['email']);
                 $new_numRue = addslashes($_POST['numRue']);
                 $new_nomRue = addslashes($_POST['nomRue']);
@@ -28,6 +30,7 @@ if (Auth::islog()){
               $req = $connexion -> prepare ($sql);
               $req->execute($q);
             }
+        
             if(!empty($_POST) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
             {
 		    //Mis à jour Email 
@@ -44,7 +47,7 @@ if (Auth::islog()){
 				$req->execute();
 				$sujet = 'Modification email';
 				$body = 'Merci de cliquer ici pour valider la modification de l email -> 
-						<a href="http://localhost/Pimpyourbody/site_web/site_php/activation_inscription.php?email='.$to.'">Modification email</a>';
+						<a href="http://127.0.0.1:81/Pimpyourbody/site_web/site_php/activation_inscription.php?email='.$to.'">Modification email</a>';
 				$entete = "MIME-Version: 1.0\r\n";
 				$entete.="Content-type: text/html; charset=UTF-8\r\n";
 				$entete.='From: PIMPYOURBODY ::' . "\r\n";
@@ -62,7 +65,7 @@ if (Auth::islog()){
               $req = $connexion -> prepare ($sql);
               $req->execute($q);
             }
-            if(strlen($_POST['numRue'])>1)
+            if(strlen($_POST['numRue'])>0)
             {
             //Mis à jour N° Rue
               $q = array('numRue'=>$new_numRue);
@@ -94,14 +97,18 @@ if (Auth::islog()){
               $req = $connexion -> prepare ($sql);
               $req->execute($q);
             }else
-			{
-					
-				if(!empty($_POST) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+            {
+                if(!empty($_POST) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 				{
 					$error_email = ' Votre email n\'est pas valide';
+                    
 				}
-
-			}
+                
+            }
+                
+            header('Location:mes_informations.php');
+			
+            
     }
 ?>
 
@@ -114,6 +121,9 @@ if (Auth::islog()){
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/cufon-yui.js"></script>
@@ -135,7 +145,7 @@ if (Auth::islog()){
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body onload="init('liNutrition')">
+<body >
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->

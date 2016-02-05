@@ -75,7 +75,7 @@ include('bibliotheque_fonctions.php');
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
 </head>
-<body oninit="init('liContact');" onload="init('liContact');">
+<body >
 <div class="main">
 	<div class="bg-img"></div>
 <!--==============================header=================================-->

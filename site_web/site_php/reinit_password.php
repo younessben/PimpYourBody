@@ -19,7 +19,7 @@ include('bibliotheque_fonctions.php');
 			$to = $email;
 			$sujet = 'Reinitilisation mot de passe';
 			$body = 'Merci de cliquer ici pour la reinitialisation du mot de passe -> 
-					<a href="http://localhost/pimpyourbody/site_web/site_php/chgt_password.php?email='.$to.'">Réinitialisation mot de passe</a>';
+					<a href="http://127.0.0.1:81/Pimpyourbody/site_web/site_php/chgt_password.php?email='.$to.'">Réinitialisation mot de passe</a>';
 			$entete = "MIME-Version: 1.0\r\n";
 			$entete.="Content-type: text/html; charset=UTF-8\r\n";
 			$entete.='From: PIMPYOURBODY ::' . "\r\n";
