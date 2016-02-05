@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 04, 2016 at 11:21 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Client :  127.0.0.1
+-- Généré le :  Ven 05 Février 2016 à 16:14
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `pimpyourbody`
+-- Base de données :  `pimpyourbody`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adresse`
+-- Structure de la table `adresse`
 --
 
 CREATE TABLE IF NOT EXISTS `adresse` (
@@ -35,12 +35,23 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `CODE_POSTAL` varchar(6) NOT NULL,
   PRIMARY KEY (`ID_ADRESSE`),
   KEY `I_FK_ADRESSE_UTILISATEUR` (`ID_UTILISATEUR`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `adresse`
+--
+
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_UTILISATEUR`, `NUMERO_RUE`, `NOM_RUE`, `VILLE`, `CODE_POSTAL`) VALUES
+(1, 6, 50, 'rue boulevard Anatole France', 'Belfort', '90000'),
+(2, 7, 25, 'boulevard anatole france', 'Belfort', '90000'),
+(3, 3, 48, 'rue Richard Wagner', 'OYONNAX', '01100'),
+(4, 8, 15, 'boulevard anatole france', 'Dijon', '21000'),
+(5, 9, 100, 'blabla', 'belfort', '90000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorie_produit`
+-- Structure de la table `categorie_produit`
 --
 
 CREATE TABLE IF NOT EXISTS `categorie_produit` (
@@ -50,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `categorie_produit` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `categorie_produit`
+-- Contenu de la table `categorie_produit`
 --
 
 INSERT INTO `categorie_produit` (`ID_CATEGORIE`, `NOM_CATÉGORIE`) VALUES
@@ -61,7 +72,7 @@ INSERT INTO `categorie_produit` (`ID_CATEGORIE`, `NOM_CATÉGORIE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commande`
+-- Structure de la table `commande`
 --
 
 CREATE TABLE IF NOT EXISTS `commande` (
@@ -72,23 +83,25 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `STATUT_COMMANDE` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_COMMANDE`),
   KEY `I_FK_COMMANDE_UTILISATEUR` (`ID_UTILISATEUR`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
--- Dumping data for table `commande`
+-- Contenu de la table `commande`
 --
 
 INSERT INTO `commande` (`ID_COMMANDE`, `ID_UTILISATEUR`, `DATE_COMMANDE`, `MONTANT_COMMANDE`, `STATUT_COMMANDE`) VALUES
-(1, 3, '2016-02-04', 0, 'Panier'),
-(2, 3, '2016-02-04', 0, 'Panier'),
-(3, 3, '2016-02-04', 0, 'Panier'),
-(4, 3, '2016-02-04', 0, 'Panier'),
-(5, 3, '2016-02-04', 0, 'Panier');
+(22, 3, '2016-02-05', 354.59, 'En cours'),
+(21, 3, '2016-02-05', 1113.09, 'En cours'),
+(20, 3, '2016-02-05', 1822.59, 'En cours'),
+(19, 3, '2016-02-05', 42.68, 'En cours'),
+(18, 3, '2016-02-05', 1101.9, 'En cours'),
+(17, 3, '2016-02-05', 629.18, 'En cours'),
+(15, 3, '2016-02-04', 75.25, 'Livré');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `details_exercice`
+-- Structure de la table `details_exercice`
 --
 
 CREATE TABLE IF NOT EXISTS `details_exercice` (
@@ -103,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `details_exercice` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `details_exercice`
+-- Contenu de la table `details_exercice`
 --
 
 INSERT INTO `details_exercice` (`ID_PROG_ENTR`, `ID_EXERCICE`, `NBR_REPETITION`, `NBR_SERIES`, `DUREE_REPOS`) VALUES
@@ -130,7 +143,7 @@ INSERT INTO `details_exercice` (`ID_PROG_ENTR`, `ID_EXERCICE`, `NBR_REPETITION`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `exercice`
+-- Structure de la table `exercice`
 --
 
 CREATE TABLE IF NOT EXISTS `exercice` (
@@ -144,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `exercice` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `exercice`
+-- Contenu de la table `exercice`
 --
 
 INSERT INTO `exercice` (`ID_EXERCICE`, `NOM_EXERCICE`, `LIEN_VIDEO`, `CHEMIN_IMG_EX`, `DESC_EXERCICE`, `CHEMIN_IMG_DEMO`) VALUES
@@ -161,23 +174,44 @@ INSERT INTO `exercice` (`ID_EXERCICE`, `NOM_EXERCICE`, `LIEN_VIDEO`, `CHEMIN_IMG
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ligne_commande`
+-- Structure de la table `ligne_commande`
 --
 
 CREATE TABLE IF NOT EXISTS `ligne_commande` (
   `ID_COMMANDE` int(11) NOT NULL,
   `ID_PRODUIT` int(11) NOT NULL,
-  `QUANTITÉ_COMMANDE` int(11) NOT NULL,
+  `QUANTITE_COMMANDE` int(11) NOT NULL,
   `MONTANT_LIGNE_CMD` float NOT NULL,
   PRIMARY KEY (`ID_COMMANDE`,`ID_PRODUIT`),
   KEY `I_FK_LIGNE_COMMANDE_COMMANDE` (`ID_COMMANDE`),
   KEY `I_FK_LIGNE_COMMANDE_PRODUIT` (`ID_PRODUIT`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `ligne_commande`
+--
+
+INSERT INTO `ligne_commande` (`ID_COMMANDE`, `ID_PRODUIT`, `QUANTITE_COMMANDE`, `MONTANT_LIGNE_CMD`) VALUES
+(15, 10, 5, 75.25),
+(17, 12, 1, 599),
+(17, 18, 2, 30.18),
+(19, 14, 2, 2),
+(18, 11, 2, 1098),
+(18, 14, 1, 1),
+(18, 16, 1, 2.9),
+(19, 18, 1, 15.09),
+(19, 19, 1, 25.59),
+(20, 12, 3, 1797),
+(20, 19, 1, 25.59),
+(22, 13, 1, 329),
+(21, 11, 2, 1098),
+(21, 18, 1, 15.09),
+(22, 19, 1, 25.59);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `performances`
+-- Structure de la table `performances`
 --
 
 CREATE TABLE IF NOT EXISTS `performances` (
@@ -194,19 +228,24 @@ CREATE TABLE IF NOT EXISTS `performances` (
   `MASSE_GRAISSEUSE` float NOT NULL,
   PRIMARY KEY (`ID_PERFORMANCE`),
   KEY `I_FK_PERFORMANCES_UTILISATEUR` (`ID_UTILISATEUR`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `performances`
+-- Contenu de la table `performances`
 --
 
 INSERT INTO `performances` (`ID_PERFORMANCE`, `ID_UTILISATEUR`, `POIDS`, `TAILLE`, `BRAS`, `EPAULES`, `POITRINES`, `CUISSES`, `TOUR_TAILLE`, `DATE_SAISIE`, `MASSE_GRAISSEUSE`) VALUES
-(2, 3, 75, 180, 40, 100, 80, 50, 70, '2016-02-02', 17.5);
+(2, 3, 75, 172, 36.2, 125, 104.5, 60, 91, '2015-12-02', 17.3),
+(3, 3, 78, 172, 40, 128, 106.8, 65, 90, '2016-01-05', 17),
+(4, 3, 80, 172, 42, 132, 109.4, 70, 85, '2016-02-05', 16.4),
+(5, 7, 80, 180, 40, 100, 80, 50, 70, '2016-02-05', 17.5),
+(6, 6, 75, 180, 40, 100, 100, 50, 70, '2016-02-05', 17.5),
+(7, 9, 75, 180, 40, 100, 100, 50, 70, '2016-02-05', 17.5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produit`
+-- Structure de la table `produit`
 --
 
 CREATE TABLE IF NOT EXISTS `produit` (
@@ -221,27 +260,32 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `MUSCLE_CONCERNE` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID_PRODUIT`),
   KEY `I_FK_PRODUIT_CATEGORIE_PRODUIT` (`ID_CATEGORIE`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
--- Dumping data for table `produit`
+-- Contenu de la table `produit`
 --
 
 INSERT INTO `produit` (`ID_PRODUIT`, `ID_CATEGORIE`, `NOM_PDT`, `PRIX`, `CHEMIN_IMG_PDT`, `STOCK`, `DESC_PDT`, `LIEN_EXERCICE`, `MUSCLE_CONCERNE`) VALUES
-(1, 1, 'Poulies', 155.99, '', 50, 'Desc poulie', NULL, NULL),
-(2, 1, 'Banc développé couché', 300, '', 50, 'Desc dc', NULL, NULL),
-(3, 1, 'Banc incliné guidée', 320, '', 50, 'desc incline', NULL, NULL),
-(4, 2, 'Poids 5kg', 25, 'images/page2-img2.jpg', 100, 'desc 5kg', NULL, NULL),
-(5, 2, 'Poids 25kg', 50, '', 100, 'desc 25kg', NULL, NULL),
-(6, 3, 'Whey gout chocolat caramel', 25, '', 100, 'desc whey', NULL, NULL),
-(7, 3, 'Sandwich à la whey', 15, '', 100, 'desc sandwich', NULL, NULL),
-(8, 3, 'Nutella à la whey', 20, '', 100, 'desc nutella', NULL, NULL),
-(9, 3, 'Thé à la whey gout cerise', 25, '', 100, 'desc thé', NULL, NULL);
+(12, 1, 'Appareil de musculation BH FITNESS - NEVADA PLUS (100KG)', 599, 'images/machine3.jpg', 200, '100kg de poids (par démultiplication), une construction en acier, siège pliable pour un gain de place, couleur de sellerie hors du commun!', NULL, 'images/anatomie.jpg'),
+(11, 1, 'ADIDAS Home Gym', 549, 'images/machine2.jpg', 200, 'Stations d’exercices : Butterfly et press assise, leg développer, poulie haute, poulie basse, pupitre à biceps.', NULL, 'images/anatomie.jpg'),
+(10, 1, 'Appareil de musculation MOOVYOO - CARBON X PRESS', 549, 'images/machine1.jpg', 200, '80 kg de charges, bench press réglable, butterfly, poste jambe, poulie haute, poulie basse, rowing assis, carter de protection, mousses grand confort, structure carrée robuste, nombreux réglages d''assise et de dossier. \r\nLivré avec plusieurs accessoires.', '', 'images/anatomie.jpg'),
+(13, 1, 'Appareil de musculation BEST FITNESS - BANC HOME OLYMPIQUE PLIABLE', 329, 'images/machine4.jpg', 20, 'Design compact et pliable avec variation de l''angle d''inclinaison pour un entraînement complet du torse.', NULL, 'images/demo_devc.jpg'),
+(14, 2, 'Standard - Diamètre 28mm FITNESS DOCTOR - FONTE 28 MM 0,5 KG', 1, 'images/pl1.jpg', 50, 'Disque Fonte de 28 mm de diamètre \r\nPoids : 0,5kg', NULL, 'images/biceps.jpg'),
+(15, 2, 'Standard - Diamètre 28mm WEIDER - DISQUE 0,5 KG', 1.1, 'images/pl2.jpg', 50, 'Disque Fonte Weider de 28 mm de diamètre.', NULL, 'images/biceps.jpg'),
+(16, 2, 'Standard - Diamètre 28mm FITNESS DOCTOR - DISQUE PUMP POIGNÉES 0,5 KG', 2.9, 'images/pl3.jpg', 50, 'Disque Pump Poignées 0,5 kg revêtement caoutchouc.', NULL, 'images/biceps.jpg'),
+(17, 2, 'Barres et haltères spécifiques HEUBOZEN - PAIRE D''HALTÈRES HEXAGONAUX CAOUTCHOUC 1KG', 10, 'images/pl4.jpg', 50, '2 haltères de 1 kg \r\n- Hexagonal \r\n- Poignée profilée chromée \r\n- Poids marqué en relief sur l''haltère', NULL, 'images/biceps.jpg'),
+(18, 3, 'IMPACT WHEY PROTEIN 1KG', 15.09, 'images/ca1.jpg', 150, 'Protéine de Whey N°1 en France.\n\nGluten Free  Vegetarian.\nPlus de 80% de protéine par portion.\nExcellent profil en acides aminés.\nIdéal pour construire et réparer les tissus.\n', NULL, NULL),
+(19, 3, 'Cookie Protéiné', 25.59, 'images/ca2.jpg', 200, 'Nouveaux parfums: Oats et raisins, Cookies & Cream et Brownie Rocky Road.\n\n37,5g de protéines par biscuit.\nCasse-croûte savoureux et pratique.\nNutritionnellement équilibré pour des personnes actives.', NULL, NULL),
+(20, 3, 'Brownie Myprotein', 18.09, 'images/ca3.jpg', 200, 'Brownie riche en protéine.\n\nVegetarian.\n23g de protéine par brownie.\nSomptueusement chocolaté.\n75% de sucre en moins qu''un brownie standard.', NULL, NULL),
+(21, 3, 'Beurre D''arachide', 8.99, 'images/ca4.jpg', 500, 'Naturel, sans sucre ni sel ajouté.\n\nVegetarian  Vegan.\nBeurre de cacahuète 100% naturel.\nSans sel, sucre ou huile de palme ajouté.\nTeneur naturellement élevée en protéines.', NULL, NULL),
+(22, 3, 'Smoothies Protéinés RTD', 16.29, 'images/ca5.jpg', 250, 'smoothies riches en protéines.\n\n15g de protéine par smoothie.\n3 arômes disponibles.\ncontribue à la croissance et au renforcement de la masse maigre.', NULL, NULL),
+(23, 3, 'MYSYRUP | Sirop Sans Sucre Ni Graisse', 5.49, 'images/ca6.jpg', 40, 'Le Plein d''énergie sans Sucre ni Gras.\n\nGluten Free  Vegetarian  Vegan.\nSirops délicieux et diététiques.\nLe Plein d’Énergie sans Sucre ni Gras.\nParfait pour napper vos porridges, pancakes et desserts préférés.', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `programme_entrainement`
+-- Structure de la table `programme_entrainement`
 --
 
 CREATE TABLE IF NOT EXISTS `programme_entrainement` (
@@ -254,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `programme_entrainement` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `programme_entrainement`
+-- Contenu de la table `programme_entrainement`
 --
 
 INSERT INTO `programme_entrainement` (`ID_PROG_ENTR`, `NOM_PROGE`, `DESC_PROGE`, `CHEMIN_IMG_PRG`, `DUREE_PROGE`) VALUES
@@ -266,7 +310,7 @@ INSERT INTO `programme_entrainement` (`ID_PROG_ENTR`, `NOM_PROGE`, `DESC_PROGE`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `programme_nutrition`
+-- Structure de la table `programme_nutrition`
 --
 
 CREATE TABLE IF NOT EXISTS `programme_nutrition` (
@@ -284,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `programme_nutrition` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `programme_nutrition`
+-- Contenu de la table `programme_nutrition`
 --
 
 INSERT INTO `programme_nutrition` (`ID_PROG_NUTR`, `NOM_PROGN`, `DESC_PROGN`, `DUREE_PROGN`, `PETIT_DEJ`, `COL_MATIN`, `DEJEUNER`, `COL_AM`, `DINER`, `COL_SOIR`) VALUES
@@ -296,7 +340,7 @@ INSERT INTO `programme_nutrition` (`ID_PROG_NUTR`, `NOM_PROGN`, `DESC_PROGN`, `D
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilisateur`
+-- Structure de la table `utilisateur`
 --
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -314,15 +358,19 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`ID_UTILISATEUR`),
   KEY `I_FK_UTILISATEUR_PROGRAMME_NUTRITION` (`ID_PROG_NUTR`),
   KEY `I_FK_UTILISATEUR_PROGRAMME_ENTRAINEMENT` (`ID_PROG_ENTR`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `utilisateur`
+-- Contenu de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`ID_UTILISATEUR`, `ID_PROG_NUTR`, `ID_PROG_ENTR`, `NOM`, `PRENOM`, `AGE`, `SEXE`, `EMAIL`, `TELEPHONE`, `MOT_DE_PASSE`, `ACTIF`) VALUES
-(3, 2, 2, 'Imre', 'Ahmet', 21, 'H', 'ahmet.imre@hotmail.fr', '0685455445', '9cf95dacd226dcf43da376cdb6cbba7035218921', 1),
-(4, 4, 4, 'BENHAOUSSEA', 'Youness', 24, 'H', 'youness.benhaoussea@gmail.com', '0623445005', '0b9c2625dc21ef05f6ad4ddf47c5f203837aa32c', 1);
+(3, 1, 1, 'Imre', 'Ahmet', 21, 'H', 'ahmet.imre@hotmail.fr', '0685455445', '9cf95dacd226dcf43da376cdb6cbba7035218921', 1),
+(4, 4, 4, 'BENHAOUSSEA', 'Youness', 24, 'H', 'youness.benhaoussea@gmail.com', '0623445005', '0b9c2625dc21ef05f6ad4ddf47c5f203837aa32c', 1),
+(6, 1, 1, 'WOLF', 'Yoann', 21, 'H', 'yoann.wolf@localhost.fr', '0606060606', '58a122868d1b16464eca61769a994a7a94e0bab3', 1),
+(7, 1, 1, 'test', 'test', 25, 'H', 'test@test.fr', '0606060606', '58a122868d1b16464eca61769a994a7a94e0bab3', 1),
+(8, NULL, NULL, 'azerty', 'azerty', 25, 'H', 'azerty@azerty.fr', '0606060606', '58a122868d1b16464eca61769a994a7a94e0bab3', 1),
+(9, 4, 4, 'sabatier', 'fabien', 21, 'H', 'fabien@localhost.com', '01235558795', '3c672a4d8eefd5f6a760985e66af8a86d20b3bfa', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
