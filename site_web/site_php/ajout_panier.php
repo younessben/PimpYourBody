@@ -6,6 +6,8 @@
 
 if (Auth::islog()){
                // echo $_GET['idProduit'].','.$_GET['qteProduit'].','.$_GET['prixUnitaire'].',';
+    
+    echo $_SESSION['idUtilisateur'];
                 ajouterPanier($connexion,$_SESSION['idUtilisateur'],$_GET['idProduit'],$_GET['qteProduit'],$_GET['prixUnitaire']);
     
     //echo $_GET['page'];

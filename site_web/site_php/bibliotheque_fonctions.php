@@ -175,7 +175,7 @@ function afficheDetailsProduit($cnn,$produit)
 
             </div>
             <div class="col-2">
-                <h2 class="p6"><span class="color-1">Conseils</span> d\'utilisation</h2>';
+                <h2 class="p6"><span class="color-1">Muscles</span> Concernés</h2>';
                 
                 if($produit[7] == null)
                     echo '<img src="images/img_vide.jpg" alt="" class="img-border img-indent">';
@@ -516,7 +516,7 @@ function ajouterPanier($cnn,$idUtilisateur,$idProduit,$qteCommande,$prixUnitaire
         }
     
         $idDerniereCommande= recupDerniereCommande($cnn);
-        echo $idDerniereCommande;
+        echo 'Id derniere commande'.$idDerniereCommande;
     
         $montantLC=intval($qteCommande)*floatval($prixUnitaire);
     
@@ -779,7 +779,7 @@ function sumMntCommande($cnn,$idCommande)
     
 
     $req="  
-        SELECT SUM(`MONTANT_LIGNE_CMD`)
+        SELECT ROUND(SUM(`MONTANT_LIGNE_CMD`),2)
         FROM `ligne_commande`
         WHERE `ID_COMMANDE`=".$idCommande.";";
         

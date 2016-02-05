@@ -11,12 +11,7 @@
     }
     else
     {
-        foreach ($liste as $performance) 
-        {
-            echo ",".$performance[4];
-            
-            
-        }
+        
     }
 
     
