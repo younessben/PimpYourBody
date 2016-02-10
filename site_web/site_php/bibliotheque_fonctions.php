@@ -24,23 +24,18 @@ MUSCLE_CONCERNE     -> 7
 // Apres avoir lister tous les produits, les ajoute dans un tableau puis renvoie le tableau
 function listerProduits($cnn,$id)
 {
-    
-    
     $req="  SELECT *
             FROM `produit`
             WHERE `ID_CATEGORIE` = ".$id.";";
     $reponse= $cnn->prepare($req);
-   
-    
     $liste =array();
     if($reponse->execute())
     {
          while ($donnees = $reponse->fetch())
         {
-            array_push($liste, array($donnees['ID_PRODUIT'],$donnees['NOM_PDT'],$donnees['DESC_PDT'],$donnees['PRIX'],$donnees['CHEMIN_IMG_PDT'],$donnees['STOCK'],$donnees['LIEN_EXERCICE']));
+            array_push($liste, array($donnees['ID_PRODUIT'],$donnees['NOM_PDT'],$donnees['DESC_PDT']
+                                     ,$donnees['PRIX'],$donnees['CHEMIN_IMG_PDT'],$donnees['STOCK'],$donnees['LIEN_EXERCICE']));
         }
-       
-        
     }
    
     return $liste;
@@ -60,26 +55,19 @@ function affichageProduit($cnn,$produit,$page) // affiche le titre
             }
             else
                 echo '<img src="'.$produit[4].'" alt="" class="img-border img-indent">';
-
             echo'
                 <div class="row">
                     <div class="col-md-4">
-
                         <p class="p2"><strong>'.$produit[1].'</strong></p>
                         <p>'.$produit[2].' </p>
-
                         <p style="color:red; font-weight:bold; width:5px;">Prix: '.$produit[3].'€ </p>
                     </div>
                     <div class="col-md-3">
                         <br/><br/><br/><br/>
-                        
                         <a href="ajout_panier.php?idProduit='.$produit[0].'&prixUnitaire='.$produit[3].'&qteProduit=1&page='.$page.'">
-
                         <button type="button" class="btn btn-primary" >Ajouter au panier</button>
                         </a>
                         <br/>
-                               
-                        
                         <a href="produit.php?idProduit='.$produit[0].'" > Plus de détails >></a>
                     </div>
 
@@ -88,13 +76,6 @@ function affichageProduit($cnn,$produit,$page) // affiche le titre
             </div>
 
         ';
-    
-    //ajouterPanier($cnn;$idUtilisateur;$idProduit,$qteCommande,$prixUnitaire)
-    /*
-    
-                                
-        */
-
 
 }
 
@@ -809,22 +790,16 @@ function recupIdPanier($cnn,$idUtil)
 
 function validerCommande($cnn, $idCommande)
 {
-    
     $mntCommande= sumMntCommande($cnn,$idCommande);
     $req="    
     UPDATE `commande` 
     SET `STATUT_COMMANDE`= 'En cours'
         , MONTANT_COMMANDE=:mntCommande
     WHERE ID_COMMANDE=:idCommande";
-    
-    
-
     $stmt = $cnn->prepare($req);
     $stmt->bindParam(':idCommande', $idCommande);
     $stmt->bindParam(':mntCommande', $mntCommande);
     $stmt->execute();
-    
-    
 }
 
 

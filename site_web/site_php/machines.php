@@ -64,16 +64,9 @@ include('bibliotheque_fonctions.php');
                             {
                                 foreach ($liste as $produit) 
                                 {
-                                    
                                     affichageProduit($connexion,$produit,"machines.php");
                                 }
                             }
-                        
-                            
-                        
-                            
-
-
                         ?>
                          <!---------------------------------------------------------------------------------------->
                         

@@ -9,11 +9,8 @@
     {
         echo '<p>Il n\'y a aucune performance pour le moment</p>';
     }
-
-
     echo "
-                <script type=\"text/javascript\">
-                    
+             <script type=\"text/javascript\">
                     $(function () {
                         $('#containerLine').highcharts({
                             title: {
@@ -25,19 +22,13 @@
                                 x: -20
                             },
                             xAxis: {
-                                categories: [
-                                    
-                                    ";
+                                categories: [";
                             foreach ($liste as $performance) 
                             {
                                 echo "'".$performance[9]."',";
-
-
                             }
-
                         echo "
-                            ]
-                            },
+                            ]},
                             yAxis: {
                                 title: {
                                     text: 'Mesures en cm'
@@ -59,70 +50,40 @@
                             },
                             series: [{
                                 name: 'Bras',
-                                data: [
-                                
-                                ";
+                                data: [";
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[4].",";
-
-
                                 }
-
                         echo "
-                                ]
-                            }, {
+                                ]}, {
                                 name: 'Poitrine',
                                 data: [
-                                
-                                
                                 ";
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[6].",";
-
-
                                 }
-
                         echo "
-                                ]
-                                
-                            }, {
+                                ]}, {
                                 name: 'Cuisse',
                                 data: [
-                                
                                 ";
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[7].",";
-
-
                                 }
-
                         echo "
-                                ]
-                                
-                            },
-                            
-                            
+                                ]},
                             {
                                 name: 'Epaules',
-                                data: [
-                                
-                                ";
+                                data: [";
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[5].",";
-
-
                                 }
-
                         echo "
-                                ]
-                                
-                            },
-                            
-                            
+                                ]},
                             {
                                 name: 'Masse graisseuse',
                                 data: [
@@ -131,19 +92,10 @@
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[10].",";
-
-
                                 }
 
                         echo "
-                                ]
-                                
-                            },
-                            
-                            
-                            
-                            
-                            
+                                ]},
                             {
                                 name: 'Tour de taille',
                                 data: [
@@ -151,8 +103,6 @@
                                 foreach ($liste as $performance) 
                                 {
                                     echo $performance[8].",";
-
-
                                 }
 
                         echo "
